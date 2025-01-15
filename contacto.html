@@ -12,7 +12,7 @@
             <a href="index.html" class="cabecera_logo"><img src="" alt="LOGO"></a>
             <form action="" method="get" class = "cabecera_buscador">
                 <button type="submit"><img src="https://flyclipart.com/thumb2/lupa-logo-png-png-image-12550.png" alt="LUPA"></button> <!-- Imagen lupa-->
-                <input type="text" placeholder="Buscar...">
+                <input type="search" placeholder="Buscar...">
             </form>
             <nav class="">
                 <button type="submit" class="toggle"><div class="circulo"></div></button>
@@ -26,10 +26,40 @@
         </nav>
     </header>
 
-    <main>
-        <section class="p1"></section>
-        <section class="p2"></section>
-        <section class="p2"></section>
+    <main class="contacto">
+        <section class="formulario">
+            <h2>Formulario de contacto:</h2>
+            <form>
+                <label>Nombre completo</label>
+                <input type="text" name="name" required>
+
+                <label>Fecha de Nacimiento:</label>
+                <input type="date" name="fecha" required>
+
+                <label>Género:</label>
+                <input type="radio" name="genero" value="Hombre" required> Hombre
+                <input type="radio" name="genero" value="Mujer" required> Mujer
+                
+                <label>Correo electrónico</label>
+                <input type="email" name="email" placeholder="example@correo.es" required>
+
+                <label>Teléfono</label>
+                <input type="tel" name="telefono" pattern="[0-9]{9}" required>
+
+                <label>Asunto</label>
+                <input type="text" name="asunto" required>
+
+                <label>Mensaje</label>
+                <textarea class="area_texto" name="mensaje" rows="5" placeholder="Mensaje..." required></textarea>
+
+                <label>Acepta los términos y condiciones</label>
+                <input type="checkbox" required>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+        <section class="info"></section>
+        <section class="newLetter"></section>
     </main>
     <footer class="pie">
         <section>
