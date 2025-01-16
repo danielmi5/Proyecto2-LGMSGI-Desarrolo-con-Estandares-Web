@@ -154,6 +154,18 @@ main{
     background: var(--fondo-pag);
 }
 
+/*====================      INICIO       =====================*/
+
+
+
+
+
+
+
+
+
+
+
 
 /*CONTACTO*/
 
@@ -251,19 +263,21 @@ main{
     
 }
 
-.contacto .newLetter{
+main .newLetter{
     width: 95%; height: 20rem;
     margin: 2rem auto 2rem auto;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 2rem;
+    padding: 2rem;
+    border: 2px solid black;
+    background: rgba(0, 0, 0, 0.2);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
 }
 
 
-
-.newLetter article {
+main .newLetter article {
     width: 19%; height: 100%;
     padding: 15px;
     background-color: beige;
@@ -273,16 +287,21 @@ main{
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
     
 }
-.newLetter article h2 {
-    font-size: 16px;
+main .newLetter article h2 {
+    font-size: 1rem;
     color: #2c3e50;
     margin: 0;
 }
-.newLetter article p {
-    font-size: 14px;
+main .newLetter article p {
+    font-size: 0.9rem;
     color: #7f8c8d;
     margin: 5px 0 0;
 }
+
+
+
+
+
 
 
 
