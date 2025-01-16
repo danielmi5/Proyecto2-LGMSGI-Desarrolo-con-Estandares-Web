@@ -28,17 +28,23 @@
 
     <main class="contacto">
         <section class="formulario">
-            <h2>Formulario de contacto:</h2>
+            <h2>Formulario de contacto</h2>
             <form>
-                <label>Nombre completo</label>
-                <input type="text" name="name" required>
-
-                <label>Fecha de Nacimiento:</label>
-                <input type="date" name="fecha" required>
-
-                <label>Género:</label>
-                <input type="radio" name="genero" value="Hombre" required> Hombre
-                <input type="radio" name="genero" value="Mujer" required> Mujer
+                <fieldset>
+                    <div>
+                        <label>Nombre completo</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div>
+                        <label>Fecha de Nacimiento</label>
+                        <input type="date" name="fecha" required>
+                    </div>
+                </fieldset>
+                
+                <div class="form_contenedor_genero">
+                    <label>Género:</label>
+                    <input type="radio" name="genero" value="Hombre" required> Hombre
+                    <input type="radio" name="genero" value="Mujer" required> Mujer</div>
                 
                 <label>Correo electrónico</label>
                 <input type="email" name="email" placeholder="example@correo.es" required>
@@ -50,16 +56,84 @@
                 <input type="text" name="asunto" required>
 
                 <label>Mensaje</label>
-                <textarea class="area_texto" name="mensaje" rows="5" placeholder="Mensaje..." required></textarea>
+                <textarea class="area_texto" name="mensaje" rows="6" placeholder="Mensaje..." required></textarea>
+                
+                <div class="form_terminos">
+                    <label>Acepta los términos y condiciones</label>
+                    <input type="checkbox" required>
+                </div>
 
-                <label>Acepta los términos y condiciones</label>
-                <input type="checkbox" required>
-
-                <button type="submit">Enviar</button>
+                <button type="submit" class="form_boton">Enviar</button>
             </form>
         </section>
-        <section class="info"></section>
-        <section class="newLetter"></section>
+        <section class="info">
+            <h2>Quiénes Somos</h2>
+            <p>
+                En nuestra empresa, nos dedicamos a marcar la diferencia en el mundo a través de soluciones innovadoras 
+                y sostenibles. Cada día trabajamos con dedicación para crear un impacto positivo en nuestros clientes 
+                y en el entorno que nos rodea.
+            </p>
+            <h3>Nuestra Historia</h3>
+            <p>
+                Fundada hace más de una década, nuestra empresa nació con la visión de cambiar la forma en que las organizaciones 
+                interactúan con el medio ambiente y las comunidades. A lo largo de los años, hemos evolucionado, adaptándonos a 
+                las necesidades del mercado, pero siempre manteniendo intactos nuestros valores fundamentales.
+            </p>
+            <h3>Nuestra Filosofía</h3>
+            <p>
+                Creemos en la innovación como motor del progreso y en el compromiso como la base para construir relaciones duraderas. 
+                Cada proyecto que emprendemos está guiado por un enfoque ético, transparente y centrado en la excelencia.
+            </p>
+            <h3>Nuestros Compromisos</h3>
+            <ul>
+                <li>Promover prácticas responsables con el medio ambiente.</li>
+                <li>Fomentar el crecimiento personal y profesional de nuestro equipo.</li>
+                <li>Garantizar la satisfacción de nuestros clientes en cada etapa del proceso.</li>
+                <li>Contribuir activamente al bienestar de las comunidades en las que operamos.</li>
+            </ul>
+            <h3>Por Qué Elegirnos</h3>
+            <p>
+                Elegirnos significa optar por una empresa que pone a las personas y al planeta en el centro de sus decisiones. 
+                Ofrecemos soluciones personalizadas y diseñadas para garantizar resultados sostenibles a largo plazo.
+            </p>
+            <p>
+                Con un equipo apasionado y altamente capacitado, estamos preparados para afrontar los desafíos más exigentes 
+                y convertirlos en oportunidades para construir un futuro mejor.
+            </p>
+            
+        </section>
+        <section class="newLetter">
+            <article>
+                <h2>Gran Lanzamiento de Producto</h2>
+                <p>Este mes, estamos emocionados de anunciar el lanzamiento de nuestro nuevo producto innovador que cambiará el mercado...</p>
+                <a href="#">Leer más</a>
+            </article>
+    
+            <article>
+                <h2>Premio a la Innovación 2025</h2>
+                <p>Nos complace compartir que nuestra empresa ha recibido el premio a la innovación por parte de la asociación...</p>
+                <a href="#">Leer más</a>
+                
+            </article>
+    
+            <article>
+                <h2>Expansión a Nuevos Mercados</h2>
+                <p>Nos complace anunciar que nuestra empresa ha comenzado a expandirse hacia nuevos mercados internacionales...</p>
+                <a href="#">Leer más</a>
+            </article>
+
+            <article>
+                <h2>Iniciativa Ecológica: Cero Emisiones</h2>
+                <p>Como parte de nuestro compromiso con el medio ambiente, hemos lanzado una nueva iniciativa para reducir las emisiones de carbono...</p>
+                <a href="#">Leer más</a>
+            </article>
+
+            <article>
+                <h2>Alianzas Estratégicas con Empresas Globales</h2>
+                <p>Este trimestre, hemos formado alianzas estratégicas con importantes empresas globales para mejorar nuestra red de distribución...</p>
+                <a href="#">Leer más</a>
+            </article>
+        </section>
     </main>
     <footer class="pie">
         <section>
