@@ -28,7 +28,7 @@ span{
     align-items: center;
 }
 
-.cabecera_inicio{
+.cabecera__inicio{
    width: 100%;
    height: 50%;
    margin: 1rem 1rem;
@@ -40,14 +40,14 @@ span{
    
 }
 
-.cabecera_inicio nav{
+.cabecera__botones{
     width: 15%; height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.cabecera_inicio .toggle{
+.cabecera__botones-darkmode{
     width: 3rem; height: 2rem;
     background-color: #2b2b2b;
     border-radius: 1rem;
@@ -60,7 +60,7 @@ span{
     background: 
 }
 */
-.cabecera_inicio .toggle .circulo{
+.cabecera__botones-darkmode-circulo{
     width: 60%; height: 100%;
     background-color: #222;
     border-radius: 100%;
@@ -69,33 +69,35 @@ span{
 }
 
 
-.cabecera_logo{
+.cabecera__logo{
     width: 4rem;
     height: 3rem;
     margin: 1rem;
     border-radius: 100%;
 }
 
-.cabecera_logo img {
+.cabecera__logo-imagen {
     width: 100%; height: 100%;
     border-radius: 100%;
     object-fit: cover;
 
 }
 
+/*Cambiar todos los enlaces de la cabecera*/
 .cabecera a{
     text-decoration: none;
     color: azure;
 }
 
-.cabecera_buscador{
+
+.cabecera__buscador{
     width: 90%; height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.cabecera_buscador button{
+.cabecera__buscador-boton{
     width: 5%; height: 50%;
     margin-right: 0;
     border-right: none;
@@ -105,17 +107,17 @@ span{
     transition: all ease 0.5s;
 }
 
-.cabecera_buscador button img{
+.cabecera__buscador-boton-imagen{
     width: 100%; height: 100%;
     
 
 }
 
-.cabecera_buscador button:hover{
+.cabecera__buscador-boton:hover{
     background: var(--fondo-cabecera);
 }
 
-.cabecera_buscador input{
+.cabecera__buscador-input{
     width: 95%; height: 50%;
     padding: 0 1rem;
     margin-right: 0;
@@ -123,7 +125,7 @@ span{
     border-radius: 0 1rem 1rem 0;
 }
 
-.cabecera_navegacion{
+.cabecera__navegacion{
     width: 100%; height: 50%;
     background: #b7dcb5;
     padding: 0.6rem;
@@ -133,7 +135,8 @@ span{
     align-items: center;
 }
 
-.cabecera_navegacion a{
+/*Todos los enlaces de navegación*/
+.cabecera__navegacion a{
     width: 8rem;
     padding: 1rem;
     color: black;
@@ -143,11 +146,14 @@ span{
 }
 
 /*Para añadir el borde al último*/
-.cabecera_navegacion a:last-child{
+.cabecera__navegacion a:last-child{
     border-right: 0.1rem solid black;
 }
 
 
+
+/*=================================================================================
+===================================================================================*/
 
 main{
     width: 100%; height: 64vh;
@@ -167,7 +173,7 @@ main{
 
 
 
-/*CONTACTO*/
+/*===================CONTACTO==========================*/
 
 
 .contacto{
@@ -178,6 +184,7 @@ main{
     flex-wrap: wrap;
 }
 
+/* Cambio global a las secciones */
 .contacto section{
     width: 45%; height: fit-content;
     margin: 2rem auto;
@@ -188,49 +195,51 @@ main{
 }
 
 
-.contacto .formulario{
+.formulario{
     display: inline-block;
 }
 
-.contacto .info{
+.info{
     width: 45%;
 }
 
 
-.formulario h2{
+.formulario__subtitulo{
     width: fit-content;
     margin: 0 auto;
     border-bottom: 2px solid black;
 }
-.formulario form{
+.contacto__formulario-form{
     width: 100%; height: 90%;
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
 }
 
-.formulario form label{
+/*Cambio global a los label de form */
+.formulario__form label{
     margin: 1rem 0 0.5rem 0;
 }
-.formulario form label:first-child{
+/*Cambio al primer label*/
+.formulario-form label:first-child{
     margin: 0rem 0 0.5rem 0;
 }
-
-.formulario form input,
-.formulario form textarea{
+/*Cambio global a los input y textarea de form */
+.formulario__form input,
+.formulario__form textarea{
     padding: 0.5rem;
     background: #f9f9f9;
     
 }
 
-.formulario form .form_contenedor_genero{
+.formulario__form__genero{
     margin-top: 1.0rem;
 }
-.formulario form .form_terminos{
+.formulario__form__terminos{
     margin-top: 1.5rem;
 }
 
-.formulario form fieldset{
+.formulario__form__nombreyfecha{
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -238,18 +247,18 @@ main{
     border: 0 solid transparent
 }
 
-.formulario form fieldset div{
+.formulario__form__nombreyfecha_contenedor{
     width: 40%;
     display: flex;
     flex-direction: column;
 }
 
-.formulario form fieldset input{
+.formulario__form__nombreyfecha__contenedor input{
     width: 100%;
     background: #f5f5f5;
 }
 
-.formulario form .form_boton{
+.formulario__form__boton{
     margin: auto 0 0 auto;
     width: 5rem; height: 2rem;
     color: white;
@@ -258,7 +267,7 @@ main{
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     transition: all ease 0.5s;
 }
-.formulario form .form_boton:hover{
+.formulario__form__boton:hover{
     background: #165d56;
     
 }
@@ -305,7 +314,8 @@ main .newLetter article p {
 
 
 
-
+/*=======================================================================
+========================================================================*/
 
 
 .pie{

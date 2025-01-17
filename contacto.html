@@ -8,17 +8,17 @@
 </head>
 <body class="pag_inicio">
     <header class="cabecera">
-        <section class="cabecera_inicio">
-            <a href="index.html" class="cabecera_logo"><img src="" alt="LOGO"></a>
-            <form action="" method="get" class = "cabecera_buscador">
-                <button type="submit"><img src="https://flyclipart.com/thumb2/lupa-logo-png-png-image-12550.png" alt="LUPA"></button> <!-- Imagen lupa-->
-                <input type="search" placeholder="Buscar...">
+        <section class="cabecera__inicio">
+            <a href="index.html" class="cabecera__logo"><img src="" alt="LOGO" class="cabecera__logo-imagen"></a>
+            <form action="" method="get" class = "cabecera__buscador">
+                <button type="submit" class="cabecera__buscador-boton"><img src="https://flyclipart.com/thumb2/lupa-logo-png-png-image-12550.png" alt="LUPA" class="cabecera__buscador-boton-imagen"></button> <!-- Imagen lupa-->
+                <input type="search" placeholder="Buscar..." class="cabecera__buscador-input">
             </form>
-            <nav class="">
-                <button type="submit" class="toggle"><div class="circulo"></div></button>
+            <nav class="cabecera__botones">
+                <button type="submit" class="cabecera__botones-darkmode"><div class="cabecera__botones-darkmode-circulo"></div></button>
             </nav>
         </section>
-        <nav class="cabecera_navegacion">
+        <nav class="cabecera__navegacion">
             <a href="index.html" target="_blank">Inicio</a>
             <a href="" target="_blank">Servicios</a>
             <a href="contacto.html" target="_blank">Contacto</a>
@@ -28,20 +28,23 @@
 
     <main class="contacto">
         <section class="formulario">
-            <h2>Formulario de contacto</h2>
-            <form>
-                <fieldset>
-                    <div>
+            <h2 class="formulario__subtitulo"></h2>
+            <form class="formulario__form">
+
+                <!-- Divs utilizados en el formulario sin contexto semántico, son usados para agrupar los elementos para dar diseño-->
+
+                <fieldset class="formulario__form__nombreyfecha">
+                    <div class="formulario__form__nombreyfecha__contenedor">
                         <label>Nombre completo</label>
                         <input type="text" name="name" required>
                     </div>
-                    <div>
+                    <div class="formulario__form__nombreyfecha__contenedor">
                         <label>Fecha de Nacimiento</label>
                         <input type="date" name="fecha" required>
                     </div>
                 </fieldset>
                 
-                <div class="form_contenedor_genero">
+                <div class="formulario__form__genero">
                     <label>Género:</label>
                     <input type="radio" name="genero" value="Hombre" required> Hombre
                     <input type="radio" name="genero" value="Mujer" required> Mujer</div>
@@ -58,7 +61,7 @@
                 <label>Mensaje</label>
                 <textarea class="area_texto" name="mensaje" rows="6" placeholder="Mensaje..." required></textarea>
                 
-                <div class="form_terminos">
+                <div class="formulario__form__terminos">
                     <label>Acepta los términos y condiciones</label>
                     <input type="checkbox" required>
                 </div>
