@@ -257,7 +257,7 @@ main{
     border: 0 solid transparent
 }
 
-.formulario__form__nombreyfecha_contenedor{
+.formulario__form__nombreyfecha__contenedor{
     width: 40%;
     display: flex;
     flex-direction: column;
@@ -370,30 +370,7 @@ main{
 }
 
 
-.testimonios{
-    width: 100%; height: 20rem;
-    margin-top: 2rem;
-    background:rgba(0, 0, 0, 0.2);
 
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.testimonios__subtitulo{
-    width: 100%; height: fit-content;
-    text-align: center;
-}
-
-.testimonios article{
-    height: 100%; width: 33.33%;
-    padding: 2rem;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-}
 
 
 /*====================================================*/
@@ -454,6 +431,32 @@ main{
 
 .servicios__articulo__info p{
     padding-left: 0.5rem;
+}
+
+
+.testimonios{
+    width: 100%; height: 20rem;
+    margin-top: 2rem;
+    background:rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.testimonios__subtitulo{
+    width: 100%; height: fit-content;
+    text-align: center;
+}
+
+.testimonios article{
+    height: 100%; width: 33.33%;
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 /* ============ BLOG ==============*/
