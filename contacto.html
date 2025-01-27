@@ -19,20 +19,18 @@
             <nav class="cabecera__botones">
                 <div class="botones__darkmode">
                     <label>
-                      <input type="checkbox">
-                      <div class="toggle"></div>
+                        <input type="checkbox">
+                        <div class="darkmode__toggle"></div>
                     </label>
                 </div>
-
             </nav>
         </section>
-        
     </header>
 
     <main class="contacto">
         <section class="formulario">
             <h2 class="formulario__subtitulo"></h2>
-            <form class="formulario__form">
+            <form action="#" method="post" class="formulario__form">
 
                 <!-- Divs utilizados en el formulario sin contexto semántico, son usados para agrupar los elementos para dar diseño-->
 
@@ -62,7 +60,7 @@
                 <input type="text" name="asunto" required>
 
                 <label>Mensaje</label>
-                <textarea class="area_texto" name="mensaje" rows="6" placeholder="Mensaje..." required></textarea>
+                <textarea name="mensaje" rows="6" placeholder="Mensaje..." required></textarea>
                 
                 <div class="formulario__form__terminos">
                     <label>Acepta los términos y condiciones</label>
@@ -73,31 +71,31 @@
             </form>
         </section>
         <section class="info">
-            <h2>Quiénes Somos</h2>
+            <h2 class="info__titulo">Quiénes Somos</h2>
             <p>
                 En nuestra empresa, nos dedicamos a marcar la diferencia en el mundo a través de soluciones innovadoras 
                 y sostenibles. Cada día trabajamos con dedicación para crear un impacto positivo en nuestros clientes 
                 y en el entorno que nos rodea.
             </p>
-            <h3>Nuestra Historia</h3>
+            <h3 class="info__subtitulo">Nuestra Historia</h3>
             <p>
                 Fundada hace más de una década, nuestra empresa nació con la visión de cambiar la forma en que las organizaciones 
                 interactúan con el medio ambiente y las comunidades. A lo largo de los años, hemos evolucionado, adaptándonos a 
                 las necesidades del mercado, pero siempre manteniendo intactos nuestros valores fundamentales.
             </p>
-            <h3>Nuestra Filosofía</h3>
+            <h3 class="info__subtitulo">Nuestra Filosofía</h3>
             <p>
                 Creemos en la innovación como motor del progreso y en el compromiso como la base para construir relaciones duraderas. 
                 Cada proyecto que emprendemos está guiado por un enfoque ético, transparente y centrado en la excelencia.
             </p>
-            <h3>Nuestros Compromisos</h3>
+            <h3 class="info__subtitulo">Nuestros Compromisos</h3>
             <ul>
                 <li>Promover prácticas responsables con el medio ambiente.</li>
                 <li>Fomentar el crecimiento personal y profesional de nuestro equipo.</li>
                 <li>Garantizar la satisfacción de nuestros clientes en cada etapa del proceso.</li>
                 <li>Contribuir activamente al bienestar de las comunidades en las que operamos.</li>
             </ul>
-            <h3>Por Qué Elegirnos</h3>
+            <h3 class="info__subtitulo">Por Qué Elegirnos</h3>
             <p>
                 Elegirnos significa optar por una empresa que pone a las personas y al planeta en el centro de sus decisiones. 
                 Ofrecemos soluciones personalizadas y diseñadas para garantizar resultados sostenibles a largo plazo.
@@ -109,45 +107,44 @@
         </section>
         <section class="newsletter">
             <h2 class="newsletter__title">Suscríbete a nuestras Noticias</h2>
-            <p class="newsletter__description">
+            <p class="newsletter__descripcion">
                 Recibe las últimas novedades y actualizaciones directamente en tu bandeja de entrada.
             </p>
-            <form class="newsletter__form">
+            <form action="#" method="post" class="newsletter__form">
                 <input type="email" class="newsletter__input" placeholder="Introduce tu correo electrónico" required>
                 <button type="submit" class="newsletter__button">Suscribirme</button>
             </form>
         </section>
     </main>
     <footer class="pie">
-        <section>
-            <h3>Apartado</h3>
-            <ul>
-                <li>uno</li>
-                <li>dos</li>
-                <li>tres</li>
-                <li>cuatro</li>
+        <section class="pie__explora">
+            <h3 class="pie__subtitulo">Explora</h3>
+            <ul class="pie__lista">
+                <li><a href="contacto.html">Acerca de nosotros</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="servicios.html">Nuestros servicios</a></li>
+                <!--<li><a href="#">Términos de uso</a></li>-->
             </ul>
         </section>
-        <section>
-            <h3>Apartado</h3>
-            <ul>
-                <li>unraefwweWTEo</li>
-                <li>dowaawfqwfs</li>
-                <li>tres</li>
-                <li>cuatro</li>
+        <section class="pie__politicas">
+            <h3 class="pie__subtitulo">Términos y políticas</h3>
+            <ul class="pie__lista">
+                <li><a href="#">Términos de uso</a></li>
+                <li><a href="#">Pólitica de privacidad</a></li>
+                <li><a href="#">Póliticas de cookies</a></li>
             </ul>
         </section>
-        <section>
-            <h3>Contacto</h3>
-            <ul>
+        <section class="pie__contacto">
+            <h3 class="pie__subtitulo">Info de contacto</h3>
+            <ul class="pie__lista">
                 <li><span>Correo:</span> nosoyyo@correo.es</li>
                 <li><span>Teléfono:</span> 987654321</li>
             </ul>
         </section>
-        <nav class="pie_redes">
-            <h3>Redes sociales</h3>
-            <ul>
-                <li>
+        <nav class="pie__redes">
+            <h3 class="pie__subtitulo">Redes sociales</h3>
+            <ul class="pie__lista">
+                <li class="">
                     <a href="https://www.youtube.com" target="_blank">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube" title="YouTube"></a>
                 </li>

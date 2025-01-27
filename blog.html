@@ -19,16 +19,12 @@
             <nav class="cabecera__botones">
                 <div class="botones__darkmode">
                     <label>
-                      <input type="checkbox">
-                      <div class="toggle"></div>
+                        <input type="checkbox">
+                        <div class="darkmode__toggle"></div>
                     </label>
                 </div>
-
             </nav>
-            <!--<form action="" method="get" class = "cabecera__buscador">
-                <button type="submit" class="cabecera__buscador-boton"><img src="https://flyclipart.com/thumb2/lupa-logo-png-png-image-12550.png" alt="LUPA" class="cabecera__buscador-boton-imagen"></button>  Imagen lupa
-                <input type="search" placeholder="Buscar..." class="cabecera__buscador-input">
-            </form>-->
+
         </section>
         
     </header>
@@ -39,22 +35,22 @@
             <article class="noticias__articulo">
                 <h3 class="noticia__titulo">Noticia1</h3>
                 <p class="noticia__info">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur non voluptate eius sunt? Fugit doloribus tenetur minus omnis nihil, aliquid veritatis totam cumque corporis quod harum provident voluptatum eveniet aspernatur?</p>
-                <img src="" alt="img1">
+                <img src="" alt="img1" class="noticia__imagen">
             </article>
             <article class="noticias__articulo">
                 <h3 class="noticia__titulo">Servicio2</h3>
                 <p class="noticia__info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates exercitationem itaque omnis reiciendis dolor ex eius? Architecto non ea amet praesentium corrupti neque, maxime, id debitis, impedit consequatur maiores consectetur?</p>
-                <img src="" alt="img1">
+                <img src="" alt="img1" class="noticia__imagen">
             </article>
             <article class="noticias__articulo">
                 <h3 class="noticia__titulo">Servicio3</h3>
                 <p class="noticia__info">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem excepturi earum commodi tempore cupiditate vitae officia iste veniam, expedita et omnis repellat? Voluptatibus aut repudiandae explicabo dignissimos recusandae consectetur magni?</p>
-                <img src="" alt="img1">
+                <img src="" alt="img1" class="noticia__imagen">
             </article>
             <article class="noticias__articulo">
                 <h3 class="noticia__titulo">Servicio4</h3>
                 <p class="noticia__info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem reprehenderit perferendis, quisquam dolor ratione expedita nihil repudiandae consectetur qui velit, ut soluta, dolores veritatis sint illo incidunt. Eveniet, maiores expedita?</p>
-                <img src="" alt="img1">
+                <img src="" alt="img1" class="noticia__imagen">
             </article>
         </section>
 
@@ -63,40 +59,34 @@
             
             <article class="faq__articulo">
                 <h3 class="faq__pregunta">
-                    ¿Qué servicios ofrecemos?
-                    <span class="faq__icon">▼</span>
+                    ¿Qué servicios ofrecemos?<span>▼</span>
                 </h3>
                 <p class="faq__respuesta">Ofrecemos una amplia variedad de servicios, desde desarrollo web hasta soporte técnico personalizado.</p>
             </article>
-            
             <article class="faq__articulo">
                 <h3 class="faq__pregunta">
-                    ¿Cómo puedo registrarme?
-                    <span class="faq__icon">▼</span>
+                    ¿Cómo puedo registrarme?<span>▼</span>
                 </h3>
                 <p class="faq__respuesta">Registrarte es fácil. Haz clic en el botón "Registrarse" en la parte superior derecha de la página y completa el formulario.</p>
             </article>
     
             <article class="faq__articulo">
                 <h3 class="faq__pregunta">
-                    ¿Es seguro compartir mis datos aquí?
-                    <span class="faq__icon">▼</span>
+                    ¿Es seguro compartir mis datos aquí?<span>▼</span>
                 </h3>
                 <p class="faq__respuesta">Tu privacidad es nuestra prioridad. Usamos tecnologías avanzadas para proteger tus datos personales.</p>
             </article>
     
             <article class="faq__articulo">
                 <h3 class="faq__pregunta">
-                    ¿Qué métodos de pago aceptan?
-                    <span class="faq__icon">▼</span>
+                    ¿Qué métodos de pago aceptan?<span>▼</span>
                 </h3>
                 <p class="faq__respuesta">Aceptamos pagos con tarjeta de crédito, débito, PayPal y transferencias bancarias.</p>
             </article>
     
             <article class="faq__articulo faq__articulo--last">
                 <h3 class="faq__pregunta">
-                    ¿Puedo cancelar mi suscripción en cualquier momento?
-                    <span class="faq__icon">▼</span>
+                    ¿Puedo cancelar mi suscripción en cualquier momento?<span>▼</span>
                 </h3>
                 <p class="faq__respuesta">Sí, puedes cancelar tu suscripción desde tu cuenta en cualquier momento sin cargos adicionales.</p>
             </article>
@@ -106,45 +96,44 @@
 
         <section class="newsletter">
             <h2 class="newsletter__title">Suscríbete a nuestras Noticias</h2>
-            <p class="newsletter__description">
+            <p class="newsletter__descripcion">
                 Recibe las últimas novedades y actualizaciones directamente en tu bandeja de entrada.
             </p>
-            <form class="newsletter__form">
+            <form action="#" method="post" class="newsletter__form">
                 <input type="email" class="newsletter__input" placeholder="Introduce tu correo electrónico" required>
                 <button type="submit" class="newsletter__button">Suscribirme</button>
             </form>
         </section>
     </main>
     <footer class="pie">
-        <section>
-            <h3>Apartado</h3>
-            <ul>
-                <li>uno</li>
-                <li>dos</li>
-                <li>tres</li>
-                <li>cuatro</li>
+        <section class="pie__explora">
+            <h3 class="pie__subtitulo">Explora</h3>
+            <ul class="pie__lista">
+                <li><a href="contacto.html">Acerca de nosotros</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="servicios.html">Nuestros servicios</a></li>
+                <!--<li><a href="#">Términos de uso</a></li>-->
             </ul>
         </section>
-        <section>
-            <h3>Apartado</h3>
-            <ul>
-                <li>unraefwweWTEo</li>
-                <li>dowaawfqwfs</li>
-                <li>tres</li>
-                <li>cuatro</li>
+        <section class="pie__politicas">
+            <h3 class="pie__subtitulo">Términos y políticas</h3>
+            <ul class="pie__lista">
+                <li><a href="#">Términos de uso</a></li>
+                <li><a href="#">Pólitica de privacidad</a></li>
+                <li><a href="#">Póliticas de cookies</a></li>
             </ul>
         </section>
-        <section>
-            <h3>Contacto</h3>
-            <ul>
+        <section class="pie__contacto">
+            <h3 class="pie__subtitulo">Info de contacto</h3>
+            <ul class="pie__lista">
                 <li><span>Correo:</span> nosoyyo@correo.es</li>
                 <li><span>Teléfono:</span> 987654321</li>
             </ul>
         </section>
-        <nav class="pie_redes">
-            <h3>Redes sociales</h3>
-            <ul>
-                <li>
+        <nav class="pie__redes">
+            <h3 class="pie__subtitulo">Redes sociales</h3>
+            <ul class="pie__lista">
+                <li class="">
                     <a href="https://www.youtube.com" target="_blank">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube" title="YouTube"></a>
                 </li>
