@@ -91,7 +91,7 @@ span{
     align-items: center;
 }
 
-input[type="checkbox"] {
+.botones__darkmode input[type="checkbox"] {
     display: none; /* Ocultamos el checkbox real */
 }
 
@@ -182,7 +182,7 @@ main{
 
 
 .inicio .newsletter{
-    margin: 0 2rem 3rem 2rem;
+    margin: 0 3rem 3rem 3rem;
 }
 
 
@@ -399,12 +399,11 @@ main{
 
 .principal{
     width: 100%; height: fit-content;
-    margin: 3rem;
+    margin: 0 3rem 3rem 3rem;
     padding: 2rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    border-top: var(--borde);
     border-bottom: var(--borde);
 }
 
