@@ -9,21 +9,28 @@
 <body class="pag_inicio">
     <header class="cabecera">
         <section class="cabecera__inicio">
-            <a href="index.html" class="cabecera__logo"><img src="" alt="LOGO" class="cabecera__logo-imagen"></a>
-            <form action="" method="get" class = "cabecera__buscador">
-                <button type="submit" class="cabecera__buscador-boton"><img src="https://flyclipart.com/thumb2/lupa-logo-png-png-image-12550.png" alt="LUPA" class="cabecera__buscador-boton-imagen"></button> <!-- Imagen lupa-->
-                <input type="search" placeholder="Buscar..." class="cabecera__buscador-input">
-            </form>
-            <nav class="cabecera__botones">
-                <button type="submit" class="cabecera__botones-darkmode"><div class="cabecera__botones-darkmode-circulo"></div></button>
+            <img src="" alt="LOGO" title="logo" class="cabecera__logo">
+            <nav class="cabecera__navegacion">
+                <a href="index.html" target="_blank">Inicio</a>
+                <a href="servicios.html" target="_blank">Servicios</a>
+                <a href="contacto.html" target="_blank">Contacto</a>
+                <a href="#" target="_blank">Blog</a>
             </nav>
+            <nav class="cabecera__botones">
+                <div class="botones__darkmode">
+                    <label>
+                      <input type="checkbox">
+                      <div class="toggle"></div>
+                    </label>
+                </div>
+
+            </nav>
+            <!--<form action="" method="get" class = "cabecera__buscador">
+                <button type="submit" class="cabecera__buscador-boton"><img src="https://flyclipart.com/thumb2/lupa-logo-png-png-image-12550.png" alt="LUPA" class="cabecera__buscador-boton-imagen"></button>  Imagen lupa
+                <input type="search" placeholder="Buscar..." class="cabecera__buscador-input">
+            </form>-->
         </section>
-        <nav class="cabecera__navegacion">
-            <a href="index.html" target="_blank">Inicio</a>
-            <a href="servicios.html" target="_blank">Servicios</a>
-            <a href="contacto.html" target="_blank">Contacto</a>
-            <a href="#" target="_blank">Blog</a>
-        </nav>
+        
     </header>
 
     <main class="main_blog">

@@ -9,26 +9,32 @@
 <body class="pag_inicio">
     <header class="cabecera">
         <section class="cabecera__inicio">
-            <a href="index.html" class="cabecera__logo"><img src="" alt="LOGO" class="cabecera__logo-imagen"></a>
-            <form action="" method="get" class = "cabecera__buscador">
-                <button type="submit" class="cabecera__buscador-boton"><img src="https://flyclipart.com/thumb2/lupa-logo-png-png-image-12550.png" alt="LUPA" class="cabecera__buscador-boton-imagen"></button> <!-- Imagen lupa-->
-                <input type="search" placeholder="Buscar..." class="cabecera__buscador-input">
-            </form>
+            <img src="" alt="LOGO" title="logo" class="cabecera__logo">
+            <nav class="cabecera__navegacion">
+                <a href="#" target="_blank">Inicio</a>
+                <a href="servicios.html" target="_blank">Servicios</a>
+                <a href="contacto.html" target="_blank">Contacto</a>
+                <a href="blog.html" target="_blank">Blog</a>
+            </nav>
             <nav class="cabecera__botones">
-                <button type="submit" class="cabecera__botones-darkmode"><div class="cabecera__botones-darkmode-circulo"></div></button>
+                <div class="botones__darkmode">
+                    <label>
+                      <input type="checkbox">
+                      <div class="toggle"></div>
+                    </label>
+                </div>
             </nav>
         </section>
-        <nav class="cabecera__navegacion">
-            <a href="#" target="_blank">Inicio</a>
-            <a href="servicios.html" target="_blank">Servicios</a>
-            <a href="contacto.html" target="_blank">Contacto</a>
-            <a href="blog.html" target="_blank">Blog</a>
-        </nav>
+        
     </header>
 
     <main class="inicio">
+        <section class="intro">
+            <img class="intro__imagen" src="" alt="Logo">
+            <h1 class="intro__titulo">Nombre de la empresa</h1>
+        </section>
         <section class="principal">
-            <h1 class="principal__titulo">Impulsa tu negocio con soluciones innovadoras</h1>
+            <h2 class="principal__titulo">Impulsa tu negocio con soluciones innovadoras</h2>
             <div class="principal__contenedorTexto">
                 <article class="principal__contexto">
                     <p>Ofrecemos soluciones innovadoras para impulsar tu negocio. Con más de una década de experiencia en el mercado, somos líderes en brindar estrategias efectivas y personalizadas para cada cliente.</p>
