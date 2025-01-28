@@ -162,7 +162,7 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
     font-size: 30px;
     color: #f0eeee;
     border-color: #f0eeee;
-    animation: bucle 7s infinite;
+    animation: bucle 5s infinite;
   }
 
 
@@ -196,6 +196,8 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
 .intro__imagen{
     width: 40%; height: 40%;
     object-fit: contain;
+    transition: all ease 1s;
+    animation: giro 8s linear infinite; /*Linear hace que gire de forma uniforme */
 }
 
 .intro__titulo{
@@ -1004,3 +1006,13 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
       transform: translateY(20px);
     }
   }
+
+
+@keyframes giro{
+    from {
+        transform: rotate(0deg); /* Empieza desde 0 grados */
+      }
+    to {
+        transform: rotate(360deg); /* Termina en 360 grados (una vuelta completa) */
+      }
+}
