@@ -31,3 +31,20 @@ Este portfolio digital tiene como objetivo presentar la amplia gama de servicios
 
 5. **Accesibilidad**:  
    La web está diseñada con la accesibilidad en mente, incluyendo texto alternativo para imágenes, ajustes de contraste y navegación intuitiva.
+
+
+### Validación de la página web
+
+HTML y CSS validado mediante W3C Validator. Página sin errores.
+
+#### Proceso
+
+- **HTML:**
+
+  []()
+
+El documento blog.html sin errores ni warnings
+
+- **CSS:**
+
+CSS validado sin errrores
