@@ -15,7 +15,6 @@ Este portfolio digital tiene como objetivo presentar la amplia gama de servicios
 
 1. **Acceso a la Página Web**:  
    Para visualizar el portfolio de Velox, dirígete a:  
-   [www.veloxmotorsport.com](https://www.veloxmotorsport.com)
 
 2. **Navegación del Sitio**:  
    El sitio web está dividido en las siguientes secciones:  
