@@ -66,9 +66,10 @@ Documento `servicios.html`
    
 Los tres warnings coinciden, elemento h2-h6 faltante en los 3 article. Como no necesito un identificador para los testimonios he decidio agruparlos con el elemento ul, y he cambiado los article por los correspondientes elementos li.
 
-El documento blog.html sin errores ni warnings
+El documento blog.html sin errores ni warnings.
 
 - **CSS:**
 
-CSS validado sin errrores
+CSS validado sin errores:
+
 ![¡CSS Válido!](http://jigsaw.w3.org/css-validator/images/vcss)
