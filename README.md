@@ -41,7 +41,21 @@ HTML y CSS validado mediante W3C Validator. Página sin errores.
 
 - **HTML:**
 
-  []()
+Documento `index.html`
+  ![Documento inicio html](readme-images/index.png)
+  1-Error: div no permitido dentro de un label en ese contexto (en "botón" para darkmode). Para arreglarlo decidí cambiar       el div por un span.
+  2- Warning: Elemento h2-h6 faltante en el section del header. Carece de sentido utilizar un section para agrupar todos los elementos ya que de por sí el header ya lo hace. Por lo que decidí eliminar el elemento `section`.
+
+Documento `contacto.html`
+![Documento inicio html](readme-images/contacto.png)
+   1-Error: Mismo error que el index ya que pertenece al header (Este error ya arreglado para la validación de los siguienetes documentos).
+   2-Warning: Mismo warning que el index ya que pertenece al header (Este warning ya arreglado para la validación de los siguienetes documentos)
+   3-Warning: Elemento h2 vacío. Añadí el contenido del h2.
+
+Documento `servicios.html`
+![Documento contacto html](readme-images/servicios.html)
+   
+Los tres warnings coinciden, elemento h2-h6 faltante en los 3 article. Como no necesito un identificador para los testimonios he decidio agruparlos con el elemento ul, y he cambiado los article por los correspondientes elementos li.
 
 El documento blog.html sin errores ni warnings
 
