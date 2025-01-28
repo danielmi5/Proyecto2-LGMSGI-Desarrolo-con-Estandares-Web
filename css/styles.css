@@ -102,7 +102,7 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
 
 
 .cabecera__logo {
-    width: 15%; height: 100%;
+    width: 20%; height: 100%;
     margin: 1rem;
     object-fit: contain;
 
