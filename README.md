@@ -14,7 +14,7 @@ Este portfolio digital tiene como objetivo presentar la amplia gama de servicios
 ## Instrucciones para Visualizar el Portfolio
 
 1. **Acceso a la Página Web**:  
-   Para visualizar el portfolio de Velox, dirígete a:  [Visita mi sitio web]((https://danielmi5.github.io/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/))
+   Para visualizar el portfolio de Velox, dirígete a:  [Visita mi sitio web](https://danielmi5.github.io/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/)
 
 2. **Navegación del Sitio**:  
    El sitio web está dividido en las siguientes secciones:  
