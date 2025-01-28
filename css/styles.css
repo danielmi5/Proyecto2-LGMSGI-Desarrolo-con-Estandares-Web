@@ -16,7 +16,6 @@
     --color-boton: #21897e;
     --color-boton-hover: #165d56;
     
-
 }
 
 /*Cambios globales*/
@@ -64,7 +63,7 @@ span{
 }
 
 .botones__darkmode input[type="checkbox"] {
-    display: none; /* Ocultamos el checkbox real */
+    display: none; /* Oculto el checkbox real */
 }
 
 .darkmode__toggle {
@@ -76,7 +75,7 @@ span{
     position: relative;
     cursor: pointer;
     transition: all ease 0.3s;
-    display: inline-block; /* Para que funcione bien como un <span> */
+    display: inline-block; /* Para que funcione bien como un span */
 }
 
 .darkmode__toggle::before {
