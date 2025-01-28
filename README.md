@@ -44,7 +44,9 @@ HTML y CSS validado mediante W3C Validator. Página sin errores.
 Documento `index.html`
   ![Documento inicio html](readme-images/index.png)
   1-Error: div no permitido dentro de un label en ese contexto (en "botón" para darkmode). Para arreglarlo decidí cambiar       el div por un span.
-  2- Warning: Elemento h2-h6 faltante en el section del header. Carece de sentido utilizar un section para agrupar todos los elementos ya que de por sí el header ya lo hace. Por lo que decidí eliminar el elemento `section`.
+  2-Warning: Elemento h2-h6 faltante en el section del header. Carece de sentido utilizar un section para agrupar todos los elementos ya que de por sí el header ya lo hace. Por lo que decidí eliminar el elemento `section`.
+  3-Warning: Elemento h2-h6 faltante en el article del contexto. Para arreglar esa parte cambié la estructuración de esa sección (apatado para texto de esa sección). Puse el contenido fuera del article y eliminé el article. El div que agrupa todo el contenido pasó a ser una section con su h3, el contenido anterior y los demás article. Las etiquetas h3 de los demás article pasaron a ser h4. 
+  4-Warning: Elemento h2-h6 faltante en el article de la imagen. Como no necesitaba un identificador para la imagen, cambie el article por un elemento aside ya que la imagen la utilizo como un recurso complementario de la sección.
 
 Documento `contacto.html`
 ![Documento inicio html](readme-images/contacto.png)
@@ -53,7 +55,7 @@ Documento `contacto.html`
    3-Warning: Elemento h2 vacío. Añadí el contenido del h2.
 
 Documento `servicios.html`
-![Documento contacto html](readme-images/servicios.html)
+![Documento contacto html](readme-images/servicios.png)
    
 Los tres warnings coinciden, elemento h2-h6 faltante en los 3 article. Como no necesito un identificador para los testimonios he decidio agruparlos con el elemento ul, y he cambiado los article por los correspondientes elementos li.
 
