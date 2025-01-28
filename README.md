@@ -71,3 +71,4 @@ El documento blog.html sin errores ni warnings
 - **CSS:**
 
 CSS validado sin errrores
+![¡CSS Válido!](http://jigsaw.w3.org/css-validator/images/vcss)
