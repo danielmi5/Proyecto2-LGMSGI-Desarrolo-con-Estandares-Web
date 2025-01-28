@@ -122,35 +122,49 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
 }
 
 
-.cabecera__navegacion{
-    width: 60%; height: 50%;
-    background: transparent; /* #b7dcb5*/
+.cabecera__navegacion {
+    width: 60%;
+    height: 50%;
+    background: transparent;
     padding: 0.6rem;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-}
-
-/*Todos los enlaces de navegación*/
-.cabecera__navegacion a{
-    width: 25%;
+  }
+  
+  /* Ajusta la lista para que se vea horizontal */
+  .cabecera__navegacion ul {
+    width: 100%; height: 100%;
+    list-style: none;
+    display: flex; 
+    justify-content: space-between;
+  }
+  
+  /* Estilo de los elementos de la lista */
+  .cabecera__navegacion li {
+    width: 25%; height: 100%;
+    text-align: center;
+  }
+  
+  /* Todos los enlaces de navegación */
+  .cabecera__navegacion a {
+    height: 100%;
+    display: block; 
     padding: 1rem;
     color: black;
     font-weight: bold;
     text-align: center;
-    border-left: 2px solid black;  
-    transition: all ease 1.5s;              
-}
-
-
-.cabecera__navegacion a:hover{
+    border-left: 2px solid black;
+    transition: all ease 1.5s;
+  }
+  
+  /* Efecto hover */
+  .cabecera__navegacion a:hover {
     font-size: 30px;
     color: #f0eeee;
     border-color: #f0eeee;
     animation: bucle 7s infinite;
-}
-
+  }
 
 
 /*=================================================================================
@@ -526,10 +540,10 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
 
 .testimonios{
     width: 100%; height: 20rem;
-    margin-top: 2rem;
+    margin: 2rem 0;
     padding: 3rem;
     background:var(--fondo-secciones);
-
+    border: var(--borde);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -585,7 +599,7 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
 }
 
 .noticias__articulo{
-    width: 50%; height: 40rem;
+    width: 50%; height: 50rem;
     padding: 2rem;
     border: 1px solid #222;
 
@@ -603,11 +617,11 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
 }
 
 .noticia__info{
-    width: 100%;
+    width: 100%; height: 48%;
 }
 
 .noticia__imagen{
-    width: 100%; height: 100%;object-fit: cover;
+    width: 100%; height: 60%;object-fit: cover;
     margin-top: auto;
     align-self: center;
     justify-self: center;
@@ -619,7 +633,7 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
 
 .faq{
     width: 100%; height: fit-content;
-    padding: 2rem; margin-top: 2rem;
+    padding: 2rem; margin: 4rem 0;
     background-color: var(--fondo-secciones);
     border: var(--borde);
 }
@@ -772,10 +786,11 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
         justify-content: center;
         margin-bottom: 1.2rem;
     }
-    .cabecera__navegacion{
+    .cabecera__navegacion ul{
         flex-direction: column;
+        align-items: center;
     }
-    .cabecera__navegacion a{
+    .cabecera__navegacion li{
         width: 70%;
     }
 }
@@ -925,7 +940,10 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
         width: 100%;
         text-wrap: wrap;
     }
-}
+    .newsletter__form{
+        width: 100%;
+    }
+} 
 
 
 /*MÓVILES*/
