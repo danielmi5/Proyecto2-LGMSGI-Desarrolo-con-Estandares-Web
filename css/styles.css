@@ -35,6 +35,18 @@ main{
 span{
     font-weight: bold;
 }
+/* ========= JS ========= */
+
+.mensaje-exito {
+    background-color: green;
+    padding: 1rem;
+    font-size: 1em;
+    margin-top: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+
 
 /* =========== HEADER  =============*/
 .cabecera{
@@ -101,7 +113,7 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
 
 
 .cabecera__logo {
-    width: 20%; height: 100%;
+    width: fit-content; height: 100%;
     margin: 1rem;
     object-fit: contain;
 
