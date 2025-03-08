@@ -49,24 +49,25 @@
                 
                 <div class="formulario__form__genero">
                     <label>Género:</label>
-                    <input type="radio" name="genero" value="Hombre" required> Hombre
-                    <input type="radio" name="genero" value="Mujer" required> Mujer</div>
+                    <input class="radio" type="radio" name="genero" value="Hombre" required> Hombre
+                    <input class="radio" type="radio" name="genero" value="Mujer" required> Mujer
+                </div>
                 
                 <label>Correo electrónico</label>
-                <input type="email" name="email" placeholder="example@correo.es" required>
+                <input class="email"  type="email" name="email" placeholder="example@correo.es" required>
 
                 <label>Teléfono</label>
-                <input type="tel" name="telefono" pattern="[0-9]{9}" required>
+                <input class="telf" type="tel" name="telefono" pattern="[0-9]{9}" required>
 
                 <label>Asunto</label>
-                <input type="text" name="asunto" required>
+                <input class="asunto" type="text" name="asunto" required>
 
                 <label>Mensaje</label>
-                <textarea name="mensaje" rows="6" placeholder="Mensaje..." required></textarea>
+                <textarea class="mensaje" name="mensaje" rows="6" placeholder="Mensaje..." required></textarea>
                 
                 <div class="formulario__form__terminos">
                     <label>Acepta los términos y condiciones</label>
-                    <input type="checkbox" required>
+                    <input class="check" type="checkbox" required>
                 </div>
 
                 <button type="submit" class="formulario__form__boton">Enviar</button>
