@@ -17,6 +17,26 @@
     --color-boton-hover: #165d56;
     
 }
+/* Dark mode */
+.dark-mode {
+    --fondo-pag: #121212;
+    --fondo-cabecera: #1e1e1e;
+    --texto-oscuro: #ffffff;
+    --texto-claro: #ffffff;
+    --titulo-claro: #cccccc;
+
+    --borde: 2px solid #ffffff;
+    --fondo-secciones: rgba(255, 255, 255, 0.1);
+
+    --fondo-inputs: #2b2b2b;
+    --fondo-inputs-focus: #3a3a3a;
+    --borde-inputs: 1px solid white;
+    --borde-color-input-focus: #ff9800;
+    --sombreado-inputs: 0 0 8px rgba(255, 152, 0, 0.3);
+    --color-boton: #ff9800;
+    --color-boton-hover: #e68900;
+}
+
 
 /*Cambios globales*/
 *{
@@ -57,6 +77,9 @@ span{
 
 
 
+
+
+
 /* =========== HEADER  =============*/
 .cabecera{
     width: 100%;
@@ -90,7 +113,7 @@ span{
 .darkmode__toggle {
     width: 60px;
     height: 30px;
-    background-color: #2b2b2b;
+    background-color: white;
     border-radius: 15px;
     border: 2px solid black;
     position: relative;
@@ -103,7 +126,7 @@ span{
     content: '';
     width: 26px;
     height: 26px;
-    background-color: #222;
+    background-color: #f0eeee;
     border-radius: 50%;
     position: absolute;
     top: 0px;
@@ -112,11 +135,11 @@ span{
 }
 
 input[type="checkbox"]:checked + .darkmode__toggle {
-    background-color: #f0eeee;
+    background-color: #222;
 }
 
 input[type="checkbox"]:checked + .darkmode__toggle::before {
-    background: white;
+    background: black;
     left: 32px; /* Mueve el círculo cuando está activado */
 }
 

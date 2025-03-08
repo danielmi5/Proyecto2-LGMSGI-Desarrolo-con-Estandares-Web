@@ -1,3 +1,31 @@
+// DARK MODE
+const darkModeToggle = document.querySelector(".botones__darkmode input");
+
+// Función para cambiar entre modos
+function darkMode() {
+    document.body.classList.toggle("dark-mode");
+
+    // Guardar preferencia en localStorage (para que se guarde el darkmode
+    const esDarkMode = document.body.classList.contains("dark-mode");
+    localStorage.setItem("darkMode", esDarkMode);
+
+    // Sincroniza el estado del checkbox
+    darkModeToggle.checked = esDarkMode;
+}
+
+// Aplica Dark Mode si estaba activado antes
+if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark-mode");
+    darkModeToggle.checked = true;
+}
+
+// Evento para cambiar el tema al hacer clic en el interruptor
+darkModeToggle.addEventListener("change", darkMode);
+
+// ===============================================================================
+
+// ===== VALIDACIÓN FORMULARIO =====
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('.formulario__form');
     const inputs = form.querySelectorAll('input, textarea');
@@ -118,4 +146,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+
+
 
