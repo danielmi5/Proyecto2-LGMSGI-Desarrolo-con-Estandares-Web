@@ -73,3 +73,97 @@ El documento blog.html sin errores ni warnings.
 CSS validado sin errores:
 
 ![¡CSS Válido!](http://jigsaw.w3.org/css-validator/images/vcss)
+
+
+- **JavaScript:**
+Los lenguajes de script de cliente relacionados con la web se utilizan para ejecutar código en el navegador del usuario, permitiendo interactividad y dinamismo en las páginas web. A continuación, se identifican y clasifican los principales lenguajes de script de cliente:
+
+1. Lenguajes de Script de Cliente para la Web
+
+Estos lenguajes se ejecutan en el navegador sin necesidad de comunicarse con el servidor en cada acción del usuario.
+
+- **JavaScript (JS)**:
+
+Características principales:
+
+- Lenguaje interpretado y basado en prototipos.
+
+- Compatible con todos los navegadores modernos.
+
+- Permite manipulación del DOM para modificar contenido dinámicamente.
+
+- Soporta programación orientada a objetos, funcional y basada en eventos.
+
+- Se puede usar con frameworks como React, Angular y Vue.js.
+
+- Compatible con AJAX para realizar peticiones asíncronas.
+
+
+
+b) TypeScript (TS)
+
+Características:
+
+- Superset de JavaScript desarrollado por Microsoft.
+
+- Agrega tipado estático y mejora la mantenibilidad del código.
+
+- Se compila a JavaScript estándar para ejecución en el navegador.
+
+- Usado en proyectos grandes como Angular.
+
+
+
+c) **Dart**
+
+Características:
+
+- Creado por Google, optimizado para el desarrollo web y móvil.
+
+- Se usa en conjunto con el framework Flutter.
+
+- Soporta tipado opcional y programación reactiva.
+
+- Puede compilarse a JavaScript para ejecución en navegadores.
+
+
+
+d) **CoffeeScript**
+
+Características:
+
+- Sintaxis más limpia y concisa que JavaScript.
+
+- Se compila a JavaScript estándar.
+
+- Facilita la escritura de código más legible y estructurado.
+
+
+
+e) **VBScript (Obsoleto)**
+
+Características:
+
+- Desarrollado por Microsoft y ejecutado en Internet Explorer.
+
+- Permitía scripts en páginas web pero fue descontinuado por falta de compatibilidad.
+
+
+
+### JavaScript
+
+JavaScript es el lenguaje más utilizado en el desarrollo web del lado del cliente debido a su versatilidad y compatibilidad con tecnologías modernas.
+
+**Ventajas de JavaScript**:
+
+- Permite manipulación del DOM en tiempo real.
+
+- Funciona en todos los navegadores sin necesidad de instalación adicional.
+
+- Permite ejecutar procesos en segundo plano sin bloquear la interfaz (usando async/await y Promises).
+
+- Amplia cantidad de librerías y frameworks como jQuery, React, Angular y Vue.js.
+
+- Permite conexión con APIs de terceros como geolocalización, almacenamiento en el navegador, y WebSockets.
+
+
