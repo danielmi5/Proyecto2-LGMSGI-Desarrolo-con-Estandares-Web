@@ -76,11 +76,10 @@ CSS validado sin errores:
 
 
 - **JavaScript:**
-Los lenguajes de script de cliente relacionados con la web se utilizan para ejecutar código en el navegador del usuario, permitiendo interactividad y dinamismo en las páginas web. A continuación, se identifican y clasifican los principales lenguajes de script de cliente:
 
-1. Lenguajes de Script de Cliente para la Web
 
-Estos lenguajes se ejecutan en el navegador sin necesidad de comunicarse con el servidor en cada acción del usuario.
+## Lenguajes de Script de Cliente para la Web
+Los lenguajes de script de cliente relacionados con la web se utilizan para ejecutar código en el navegador del usuario sin necesidad de comunicarse con el servidor en cada acción del usuario, permitiendo interactividad y dinamismo en las páginas web. A continuación, se identifican y clasifican los principales lenguajes de script de cliente:
 
 a) **JavaScript (JS)**:
 
