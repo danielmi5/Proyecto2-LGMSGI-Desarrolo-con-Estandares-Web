@@ -82,7 +82,7 @@ Los lenguajes de script de cliente relacionados con la web se utilizan para ejec
 
 Estos lenguajes se ejecutan en el navegador sin necesidad de comunicarse con el servidor en cada acción del usuario.
 
-- **JavaScript (JS)**:
+a) **JavaScript (JS)**:
 
 Características principales:
 
@@ -100,7 +100,7 @@ Características principales:
 
 
 
-b) TypeScript (TS)
+b) **TypeScript (TS)**
 
 Características:
 
