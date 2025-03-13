@@ -310,3 +310,7 @@ https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/
 1. Selecciono la sección de noticias mediante la clase de la sección. 
 2. Selecciono el último elemento (articulo noticia) de la sección con el selector de la clase de los artículos y `last:child`.
 3. Creo el artículo nuevo y le añado la clase de las noticias.
+4. Guardo en una constante el contenido HTML y se lo asigno al nuevo artículo (noticia) mediante innerHTML.
+5. Asigno al artículo alt y title.
+6. Añado al artículo a la sección con appendChild().
+7. Modifico los estilos de la sección (incluido artículos) mediante style.property.
