@@ -291,6 +291,10 @@ https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/
 		- **`contains("clase")`:** Devuelve `true` si el elemento tiene la clase especificada y `false` en caso contrario.
 		- **`replace("claseAntigua", "claseNueva")`:** Sustituye una clase por otra.
 	- **`style.property`:** Permite modificar los estilos CSS de un elemento de manera directa.
+	
+- **Ejemplo:** 
+
+https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/cea71c4d816daa455016fdb04265e6cd0fbb11e5/js/script.js#L234-L249
 
 #### Ejemplo con todos los apartados
 
@@ -306,7 +310,3 @@ https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/
 1. Selecciono la sección de noticias mediante la clase de la sección. 
 2. Selecciono el último elemento (articulo noticia) de la sección con el selector de la clase de los artículos y `last:child`.
 3. Creo el artículo nuevo y le añado la clase de las noticias.
-	
-- **Ejemplo:** 
-
-https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/cea71c4d816daa455016fdb04265e6cd0fbb11e5/js/script.js#L234-L249
