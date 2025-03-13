@@ -265,15 +265,17 @@ https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/
 	
 - **Ejemplo:** 
 
+	- **Contenido**
 https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/cea71c4d816daa455016fdb04265e6cd0fbb11e5/js/script.js#L99-L132
 
+	- **Atributos**
 https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/cea71c4d816daa455016fdb04265e6cd0fbb11e5/js/script.js#L142-L157
 
 #### 4. Eliminar elementos de la página según criterios específicos
 
 - **Métodos**:
 	- **`remove()`:** elimina el elemento del DOM directamente.
-	- **`elementoPadre.removeChild(elementoHijo)`:** Comprueba si un elemento posee un atributo específico.
+	- **`elementoPadre.removeChild(elementoHijo)`:** Es un método del elemento padre y requiere que se especifique el elemento hijo que se va a eliminar.
 	
 - **Ejemplo:**
 
