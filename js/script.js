@@ -248,6 +248,49 @@ function manipularEstilos(seEjecuta = false){
 
 }
 
+//Voy a cambiar la última noticia del blog por una noticia nueva, y los estilos de la sección de noticias.
+function ejemploCombinado(seEjecuta = false){
+    if (!seEjecuta){
+        return 
+    }
+
+    // Selecciono la sección de noticias con su nombre de clase
+    const seccionNoticias = document.querySelector('.noticias');
+
+    // Selecciono el articulo último
+    const ultimoArticulo = seccionNoticias.querySelector('.noticias__articulo:last-child');
+    seccionNoticias.removeChild(ultimoArticulo); //Lo elimino mediante removeChild desde el padre(la sección)
+    
+
+    // Creo un nuevo artículo
+    const nuevoArticulo = document.createElement('article');
+    nuevoArticulo.classList.add('noticias__articulo'); // Y le añado las mismas clases que las demás noticias
+
+    const htmlContenido = `
+    <h3 class="noticia__titulo">Nuevas alianzas estratégicas en el mundo del motorsport</h3>
+    <p class="noticia__info">Nos complace anunciar una serie de nuevas alianzas estratégicas con importantes marcas del mundo del motorsport. Estas colaboraciones fortalecerán nuestra presencia en los principales campeonatos de carreras y permitirán la integración de nuevas tecnologías que optimicen el rendimiento de nuestros vehículos. Entre los principales beneficios de estas alianzas se incluyen el acceso a recursos exclusivos y el intercambio de conocimientos técnicos que contribuirán al éxito de nuestra compañía y nuestros socios en el circuito.
+    </p>
+    <img src="assets/gar.png" class="noticia__imagen">
+    `; //HTML del contenido HTML para la nueva Noticia
+    
+    nuevoArticulo.innerHTML = htmlContenido; // Le asigno el contenido HTML mediante innerHTML
+
+    //Le asigno el texto alternativo y el titulo
+    nuevoArticulo.alt = "img4";
+    nuevoArticulo.title = "Imagen nueva";
+
+    // Añado el nuevo artículo a la sección de noticias
+    seccionNoticias.appendChild(nuevoArticulo);
+
+    // Modifico los estilos de la sección mediante style.property (miniDarkmode)
+    seccionNoticias.style.backgroundColor = "#2e2e2e"; // Fondo oscuro
+    seccionNoticias.style.color = "#ffffff"; // Texto blanco
+    let noticias = document.getElementsByClassName("noticias__articulo");
+    Array.from(noticias).forEach(noticia => {noticia.style.border = "2px solid white"}); // Borde blanco)
+
+
+    
+}
 
 // =====================================================================================================
 
@@ -267,3 +310,6 @@ eliminarElementos();
 
 //Apartado 5
 manipularEstilos();
+
+//Ejemplo combinando todos los apartados
+ejemploCombinado()
