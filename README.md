@@ -219,7 +219,7 @@ MsgBox "Hola, " & nombre & "!"
 
 ### Manipulación del DOM
 
-Para la **ejecución** del script, los apartados están hecho en funciones, de forma predeterminada no se ejecutan, se tiene que pasar true como parámetro de la función (esta se encuentra justo después de la lógica de la función) para poder ejecutarla.
+Para la **ejecución** del script, los apartados están hechos en funciones, de forma predeterminada no se ejecutan, se tiene que pasar true como parámetro de la función que se quiera ejecutar para poder ejecutarla. Todas las funciones se encuentran al final del archivo.
 
 #### 1. Seleccionar y acceder a elementos del documento web
 
