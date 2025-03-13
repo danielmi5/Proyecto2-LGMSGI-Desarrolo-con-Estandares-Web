@@ -76,7 +76,9 @@ CSS validado sin errores:
 
 
 - **JavaScript:**
-
+  
+## Sintaxis moderna JavaScript (ES6+)
+La sintaxis moderna de JavaScript (ES6+) introduce mejoras significativas en la escritura del código. `let` y `const` se utilizan para declarar variables con alcance de bloque, donde `let` permite reasignaciones y `const` no. Las `arrow functions` proporcionan una forma más concisa de escribir funciones, manteniendo el contexto de `this`. Las `template literals` permiten incluir variables y expresiones dentro de cadenas de texto usando ${}. Además, la desestructuración facilita la extracción de valores de objetos y arreglos, asignándolos directamente a variables, mejorando la legibilidad y eficiencia del código.
 
 ## **Lenguajes de Script de Cliente para la Web**
 
