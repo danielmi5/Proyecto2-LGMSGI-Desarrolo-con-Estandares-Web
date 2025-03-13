@@ -305,7 +305,7 @@ https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/
 
 1. Selecciono la sección de noticias mediante la clase de la sección. 
 2. Selecciono el último elemento (articulo noticia) de la sección con el selector de la clase de los artículos y `last:child`.
-3. Creo el artículo nuevo
+3. Creo el artículo nuevo y le añado la clase de las noticias.
 	
 - **Ejemplo:** 
 
