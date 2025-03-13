@@ -119,7 +119,7 @@ function saludar(nombre) {
 let nombre = "Juan";
 console.log(saludar(nombre));
 
-```0
+```
 
 #### TypeScript (TS)
 
