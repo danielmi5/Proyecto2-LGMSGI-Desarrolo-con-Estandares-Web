@@ -291,6 +291,21 @@ https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/
 		- **`contains("clase")`:** Devuelve `true` si el elemento tiene la clase especificada y `false` en caso contrario.
 		- **`replace("claseAntigua", "claseNueva")`:** Sustituye una clase por otra.
 	- **`style.property`:** Permite modificar los estilos CSS de un elemento de manera directa.
+
+#### Ejemplo con todos los apartados
+
+Consiste en sustituir la última noticia de la sección noticias por una noticia nuevo, aplicando cada apartado:
+- Selección de elementos.
+- Creación de elementos.
+- Modificacíón de contenido y atributos.
+- Eliminación de elementos
+- Manipulación de estilos
+
+https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/ae79cf9b55f7340b3868a77e3e496584be2d0879/js/script.js#L257-L289
+
+1. Selecciono la sección de noticias mediante la clase de la sección. 
+2. Selecciono el último elemento (articulo noticia) de la sección con el selector de la clase de los artículos y `last:child`.
+3. Creo el artículo nuevo
 	
 - **Ejemplo:** 
 
