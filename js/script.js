@@ -1,6 +1,8 @@
+//PARA PODER EJECUTAR CADA APARTADO, PASAR POR EL PARÁMETRO DE LA FUNCIÓN, TRUE. Ejemplo -> function(true) | Eliminar este true para que no se ejecute.
+
 //Función global para comprobar selectores
 function selectorValido(selector) {
-    // Verifica si el selector es una cadena y no está vacío o solo tiene espacios
+    // Verifica si el selector es una cadena y si no está vacío
     if (typeof selector !== "string" || selector.trim() === "") {
         console.log("**ERROR** -> Debes proporcionar un selector CSS válido.");
         return false; // Retorna false si el selector no es válido
@@ -42,12 +44,10 @@ function accederAElementos(seEjecuta = false){
     console.log(elementoTag);
 }
 
-accederAElementos()
-
 //Crear y añadir nuevos elementos dinámicamente al documento.
 
-//Ejemplo: añado en el footer, la red twitch a la lista de enlaces de las redes sociales
-function ejemplo(seEjecuta = false){
+//Ejemplo: En el footer, añado twitch a la lista de enlaces de las redes sociales
+function ejemploCreacion(seEjecuta = false){
     if (!seEjecuta){
         return;
     }
@@ -85,8 +85,6 @@ function ejemplo(seEjecuta = false){
     }
 }
 
-ejemplo();
-
 
 
 
@@ -105,7 +103,7 @@ function contenido(seEjecuta = false){
     //innerText obtiene el contenido HTML de un elemento (incluido las etiquetas). Es decir que si de modifica un elemento con innerHTML eliminaría todo el contenido HTML.
     const seccionIntro = document.querySelector(".intro");
     console.log(seccionIntro.innerHTML) // Muestra el contenido HTML de la sección intro
-    seccionIntro.innerHTML = "<img src='../assets/ser3.jpg' width='1000px' height='853px'>Contenido de la sección cambiado por esta img" //Esta etiqueta está incompleto, pero con innerHTML el navegador comprueba y lo parsea, intentando que el código HTML sea correcto en todo momento
+    seccionIntro.innerHTML = "<img src='../assets/ser3.jpg' width='1000px' height='853px'>Contenido de la sección cambiado por esta img" //Esta etiqueta está incompleta, pero con innerHTML el navegador comprueba y lo parsea, intentando que el código HTML sea correcto en todo momento
     console.log(seccionIntro.innerHTML);
 
     //outerText obtiene el contenido HTML de un elemento (incluyendo el html de dicho elemento)
@@ -131,7 +129,7 @@ function contenido(seEjecuta = false){
     const pieContacto = document.querySelector(".pie__lista"); //Cojo la primera lista del footer
     pieContacto.setHTMLUnsafe(html); //Y le cambia el contenido por el HTML de html
 }
-contenido();
+
 
 //ATRIBUTOS
 
@@ -157,7 +155,7 @@ function atributos(seEjecuta = false){
     elementoPrueba.setAttribute("alt", "Imagen que no es un logo");
 }
 
-atributos();
+
 
 
 
@@ -224,7 +222,7 @@ function eliminarElementos(seEjecuta = false){
     eliminarElementos("li"); //elimina todos los elementos li
 }
 
-eliminarElementos();
+
 
 // Manipular estilos directamente desde JavaScript para modificar colores, tamaños o propiedades visuales según la interacción del usuario.
 function manipularEstilos(seEjecuta = false){
@@ -250,4 +248,22 @@ function manipularEstilos(seEjecuta = false){
 
 }
 
+
+// =====================================================================================================
+
+//Apartado 1
+accederAElementos();
+
+//Apartado 2
+ejemploCreacion();
+
+//Apartado 3
+contenido();
+
+atributos();
+
+//Apartado 4
+eliminarElementos();
+
+//Apartado 5
 manipularEstilos();
