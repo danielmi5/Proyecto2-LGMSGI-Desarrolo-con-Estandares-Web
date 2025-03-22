@@ -313,3 +313,31 @@ manipularEstilos();
 
 //Ejemplo combinando todos los apartados
 ejemploCombinado()
+
+
+/*=================================*/
+
+//============ DARKMODE ===================================
+
+const botonDarkMode = document.querySelector(".botones__darkmode input");
+
+// Función para cambiar entre modos
+function darkMode() {
+    //Mediante toggle si la clase existe la elimina y retorna false. Si no, la añade y retorna true.
+    const esDarkMode = document.body.classList.toggle("dark-mode");
+
+    // Para que se guarde si el DarkMode está en uso (clave: darkMode - valor: true o false). Se guarda en el almacenamiento local sin expiración de tiempo.
+    localStorage.setItem("darkMode", esDarkMode.toString());
+
+    // Sincroniza el estado del checkbox, si está en darkmode está activado
+    botonDarkMode.checked = esDarkMode;
+}
+
+// Activa Dark Mode si estaba activado antes
+if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark-mode");
+    botonDarkMode.checked = true;
+}
+
+// Cada vez que se pulse el botón (cambia el estado del checkbox) se llama a la función darkMode()
+botonDarkMode.addEventListener("change", darkMode);
