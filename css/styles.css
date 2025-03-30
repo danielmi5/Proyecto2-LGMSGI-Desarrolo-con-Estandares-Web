@@ -56,6 +56,17 @@ span{
     font-weight: bold;
 }
 
+/*========= JS ===========*/
+
+.linea-error {
+    background-color: red;
+    font-size: 1em;
+    margin-top: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+
 /* =========== HEADER  =============*/
 .cabecera{
     width: 100%;

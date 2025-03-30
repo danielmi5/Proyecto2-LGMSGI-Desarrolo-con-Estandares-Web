@@ -323,7 +323,7 @@ const botonDarkMode = document.querySelector(".botones__darkmode input");
 
 // Función para cambiar entre modos
 function darkMode() {
-    //Mediante toggle si la clase existe la elimina y retorna false. Si no, la añade y retorna true.
+    //Mediante toggle si la clase existe, la elimina y retorna false. Si no, la añade y retorna true.
     const esDarkMode = document.body.classList.toggle("dark-mode");
 
     // Para que se guarde si el DarkMode está en uso (clave: darkMode - valor: true o false). Se guarda en el almacenamiento local sin expiración de tiempo.
@@ -341,3 +341,94 @@ if (localStorage.getItem("darkMode") === "true") {
 
 // Cada vez que se pulse el botón (cambia el estado del checkbox) se llama a la función darkMode()
 botonDarkMode.addEventListener("change", darkMode);
+
+
+//============ FORMULARIO ===================================
+
+const form = document.querySelector('.formulario__form');
+const inputs = form.querySelectorAll('input, textarea');
+
+Array.from(inputs).forEach(input => {
+    console.log(input.name);
+})
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Evita el envío del formulario
+
+    let formOk = true;
+    //Verificación última de que todo está correcto, en caso de que no cancela el envío
+    inputs.forEach(input => verificarInput(input));
+    //TODO: Que verificarInput() devuelva un booleano para saber si está correcto o no el formulario, si no lo está modificar formOk con false y luego realizar lo necesario.
+
+    console.log('Enviando formulario...');
+    console.log(inputs);
+
+});
+
+inputs.forEach(input => {
+    input.addEventListener('blur', (event) => verificarInput(event.target));
+});
+
+function verificarInput(input) {
+    switch (input.name) {
+        case "name":
+            if (!validarPatron(input.value, "^[a-zA-ZÀ-ÿ\\s]{3,40}$")){
+                lanzarError("El nombre no es válido.", input)
+            }
+            break;
+        case "email":
+            if (!validarPatron(input.value, "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")){
+                lanzarError("El correo electrónico no es válido.", input)
+            }
+            break;
+        case "fecha":
+            if (!validarPatron(input.value, "^\\d{4}-\\d{2}-\\d{2}$" )){
+                lanzarError("La fecha no es válida.", input)
+            }
+            break;
+        case "radio":
+            const radios = document.querySelectorAll(".radio");
+            const radioSeleccionado = Array.from(radios).some(radio => radio.checked);
+            if (!radioSeleccionado) {
+                lanzarError("Debe seleccionar una opción de radio.", input);
+            }
+            break;
+        case "telefono":
+            if (!validarPatron(input.value, "^[0-9]{9}$")){
+                lanzarError("El teléfono no es válido.", input)
+            }
+            break;
+        case "asunto":
+            if (input.value.trim() === "") {
+                lanzarError("El asunto no puede estar vacío.", input);
+            }
+            break;
+        case "mensaje":
+            const caracteres = 10;
+            if (input.value.trim().length < caracteres) {
+                lanzarError(`El mensaje debe tener al menos ${caracteres} caracteres.`, input);
+            }
+            break;
+        case "check":
+            if (!input.checked) {
+                lanzarError("Debe aceptar los términos y condiciones.", input);
+            }
+            break;
+    }
+}
+
+function validarPatron(valor, patron) {
+    const regex = new RegExp(patron);  // Convierto la cadena en una expresión regular
+    return regex.test(valor);
+}
+
+function lanzarError(mensaje, input) {
+    const contMensaje = document.createElement('div');
+    contMensaje.className = 'linea-error';
+    contMensaje.textContent = mensaje;
+
+    //Añade el mensaje debajo del input
+    input.insertAdjacentElement('afterend', contMensaje);
+}
+
+
