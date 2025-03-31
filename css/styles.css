@@ -116,7 +116,7 @@ span{
     background-color: #f0eeee;
     border-radius: 50%;
     position: absolute;
-    top: 0.25px;
+    top: 0px;
     left: 2px;
     transition: left 0.3s ease;
 }
@@ -747,10 +747,11 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
+    align-self: center;
 }
 
-.pie__redes .pie__subtitulo{
-    color: var(--titulo-claro);
+.pie__subtitulo{
+    color: white;
     align-self: center;
 }
 
