@@ -356,78 +356,98 @@ form.addEventListener('submit', function(e) {
     e.preventDefault(); // Evita el envío del formulario
 
     let formOk = true;
-    //Última verificación de que todo está correcto antes de enviar, en caso de que no cancela el envío
-    inputs.forEach(input => {
-        if (!verificarInput(input)) formOk = false;
-    });
+    //Verificación última de que todo está correcto, en caso de que no cancela el envío
+    inputs.forEach(input => verificarInput(input));
+    //TODO: Que verificarInput() devuelva un booleano para saber si está correcto o no el formulario, si no lo está modificar formOk con false y luego realizar lo necesario.
+
+    console.log('Enviando formulario...');
+    console.log(inputs);
 
 });
 
+
 inputs.forEach(input => {
-    input.addEventListener('blur', (event) => verificarInput(event.target));
+    localStorage.removeItem(input.name);
+    input.addEventListener('input', (event) => verificarInput(event.target));
 });
 
 function verificarInput(input) {
     switch (input.name) {
         case "name":
-            if (!validarPatron(input.value, "^[a-zA-ZÀ-ÿ]{3,40}$")){
+            if (!validarPatron(input.value, "^[a-zA-ZÀ-ÿ\\s]{3,40}$")) {
                 lanzarError("El nombre no es válido.", input);
-                return false;
-            } else eliminarError(input);
-            break;
-        case "email":
-            if (!validarPatron(input.value, "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")){
-                lanzarError("El correo electrónico no es válido.", input);
-                return false;
-            } else eliminarError(input);
-            break;
-        case "fecha":
-            if (!validarPatron(input.value, "" )){
-                
-                lanzarError("La fecha no es válida.", input);
-                return false;
             } else {
                 eliminarError(input);
-                //TODO: Hacer una comprobación, que la fecha no pase la actual..
-                if (input.value > "a");
-            }   
+                lanzarBien("Nombre válido.", input);
+            }
+            break;
+        case "email":
+            if (!validarPatron(input.value, "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
+                lanzarError("El correo electrónico no es válido.", input);
+            } else {
+                eliminarError(input);
+                lanzarBien("Correo electrónico válido.", input);
+            }
+            break;
+        case "fecha":
+            if (!validarPatron(input.value, "^\\d{4}-\\d{2}-\\d{2}$")) {
+                lanzarError("La fecha no es válida.", input);
+            } else {
+                const fechaIntroducida = new Date(input.value);
+                const fechaActual = new Date();
+
+                if (fechaIntroducida > fechaActual) {
+                    lanzarError("La fecha no es válida.", input);
+                } else {
+                    eliminarError(input);
+                    lanzarBien("Fecha válida.", input);
+                }
+            }
             break;
         case "radio":
             const radios = document.querySelectorAll(".radio");
             const radioSeleccionado = Array.from(radios).some(radio => radio.checked);
             if (!radioSeleccionado) {
                 lanzarError("Debe seleccionar una opción de radio.", input);
-                return false;
-            } else eliminarError(input);
+            } else {
+                eliminarError(input);
+                lanzarBien("Opción seleccionada correctamente.", input);
+            }
             break;
         case "telefono":
-            if (!validarPatron(input.value, "^[0-9]{9}$")){
+            if (!validarPatron(input.value, "^[0-9]{9}$")) {
                 lanzarError("El teléfono no es válido.", input);
-                return false;
-            } else eliminarError(input);
+            } else {
+                eliminarError(input);
+                lanzarBien("Teléfono válido.", input);
+            }
             break;
         case "asunto":
             if (input.value.trim() === "") {
                 lanzarError("El asunto no puede estar vacío.", input);
-                return false;
-            } else eliminarError(input);
+            } else {
+                eliminarError(input);
+                lanzarBien("Asunto válido.", input);
+            }
             break;
         case "mensaje":
             const caracteres = 10;
             if (input.value.trim().length < caracteres) {
                 lanzarError(`El mensaje debe tener al menos ${caracteres} caracteres.`, input);
-                return false;
-            } else eliminarError(input);
+            } else {
+                eliminarError(input);
+                lanzarBien("Mensaje válido.", input);
+            }
             break;
         case "check":
             if (!input.checked) {
                 lanzarError("Debe aceptar los términos y condiciones.", input);
-                return false;
-            } else eliminarError(input);
+            } else {
+                eliminarError(input);
+                lanzarBien("Términos y condiciones aceptados.", input);
+            }
             break;
     }
-
-    return true;
 }
 
 function validarPatron(valor, patron) {
@@ -436,26 +456,44 @@ function validarPatron(valor, patron) {
 }
 
 function lanzarError(mensaje, input) {
-    if (localStorage.getItem(input.name) == null){
+    if (localStorage.getItem(input.name) == null) {
         const contMensaje = document.createElement('div');
         contMensaje.className = 'linea-error';
         contMensaje.textContent = mensaje;
 
-        //Añade el mensaje debajo del input
+        contMensaje.classList.add("msj-" + input.name);  // Clase única para cada mensaje
+
+        // Añade el mensaje debajo del input
         input.insertAdjacentElement('afterend', contMensaje);
 
-        localStorage.setItem(input.name, JSON.stringify(contMensaje));
+        localStorage.setItem(input.name, "true");
     }
 }
 
-function eliminarError(input){
-    if (localStorage.getItem(input.name) != null){
-        const cont = JSON.parse(localStorage.getItem(input.name));
+function lanzarBien(mensaje, input) {
+    // Solo si no existe el mensaje lo lanza
+    const mensajeExistente = document.querySelector('.linea-bien.' + input.name);
+    if (!mensajeExistente) {
+
+        const contMensaje = document.createElement('div');
+        contMensaje.className = 'linea-bien ' + input.name; // Añadir una clase con el nombre del campo
+        contMensaje.textContent = mensaje;
+
+        // Añadir el mensaje debajo del input
+        input.insertAdjacentElement('afterend', contMensaje);
+
+        setTimeout(function () {
+            contMensaje.remove();
+        }, 1000);
+    }
+}
+
+function eliminarError(input) {
+    const contMensaje = document.querySelector('.msj-' + input.name);
+
+    if (contMensaje) {
+        contMensaje.remove();
         localStorage.removeItem(input.name);
-
-        cont.remove;
     }
 }
-
-
 

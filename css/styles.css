@@ -66,6 +66,14 @@ span{
     text-align: center;
 }
 
+.linea-bien {
+    background-color: green;
+    font-size: 1em;
+    margin-top: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
+
 
 /* =========== HEADER  =============*/
 .cabecera{
