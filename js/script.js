@@ -344,7 +344,7 @@ botonDarkMode.addEventListener("change", darkMode);
 
 
 //============ FORMULARIO ===================================
-
+/*
 const form = document.querySelector('.formulario__form');
 const inputs = form.querySelectorAll('input, textarea');
 
@@ -497,3 +497,50 @@ function eliminarError(input) {
     }
 }
 
+*/
+
+/*========GALERÍA===========*/
+const botonAgregar = document.querySelector(".boton_aniadir");
+botonAgregar.addEventListener('click', aniadirImagen)
+
+const botonesEliminar = document.getElementsByClassName("boton_eliminar")
+Array.from(botonesEliminar).forEach(boton => boton.addEventListener('click', function (){
+    boton.parentElement.remove();
+}))
+
+function aniadirImagen() {
+    const imagen = document.querySelector(".input_imagen");
+    const archivo = imagen.files[0]; // Al elegir la imagen se guarda en files (array de objetos File) como objeto File, al no tener el input el atributo multiple solo se puede seleccionar una imagen, por lo que su índice sería el 0. ** En caso de utilizar multiple habría que recorrer el array, añadiendo cada imagen
+    const imagenes = document.querySelector(".galeria_lista")
+
+    // Cuando hay un clic en la lista de imagenes, comprueba si es por el boton de eliminar, si lo es elimina el elemento padre que sería el contenedor de la imagen
+    imagenes.addEventListener("click", (evento) => {
+        if (evento.target.classList.contains("boton_eliminar")) {
+            evento.target.parentElement.remove();
+        }
+    })
+    // Si existe la imagen la lee y la añade a la galería
+    if (archivo) {
+        const contenedor = document.createElement("div");
+        contenedor.classList.add("contenedor_imagen");
+
+        const img = document.createElement("img");
+        img.classList.add("galeria__imagen");
+
+        const lector = new FileReader();
+        lector.onload = function (e) {
+            img.src = e.target.result; //Guarda la url de la imagen leída en la ruta del nuevo elemento img
+        };
+        //Al leer el archivo lo convierte a un Data URL (en base64 para leer la imagen)
+        lector.readAsDataURL(archivo);
+
+        const botonEliminar = document.createElement("button");
+        botonEliminar.classList.add("boton_eliminar");
+        botonEliminar.textContent = "Eliminar";
+
+        contenedor.appendChild(img);
+        contenedor.appendChild(botonEliminar);
+        imagenes.appendChild(contenedor);
+
+    }
+}
