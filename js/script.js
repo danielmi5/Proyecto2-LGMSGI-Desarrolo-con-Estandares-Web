@@ -544,3 +544,42 @@ function aniadirImagen() {
 
     }
 }
+
+
+
+//=============== FILTROS =================
+
+const formFiltros = document.querySelector(".filtros__form")
+const seccionServicios = document.querySelector(".servicios")
+const servicios = document.querySelectorAll('.servicios__articulo');
+
+formFiltros.addEventListener('submit', function (evento) {
+    evento.preventDefault();
+    filtrarServicios();
+});
+
+function filtrarServicios() {
+    const buscado = seccionServicios.querySelector(".filtros__buscador").value.trim().toLowerCase();
+    const filtro  = seccionServicios.querySelector(".filtros__filtro").value;
+
+    const haBuscado = buscado === " "
+
+    servicios.forEach(servicio => {
+        const titulo = servicio.querySelector('.servicio__titulo').textContent.toLowerCase();
+
+        const precio = servicio.querySelector('.servicio_precio span').textContent.split(" ")[0] // Solo coge el número del precio
+        const fecha = servicio.querySelector('.servicio_fecha span').textContent;
+
+        let esBusqueda;
+
+        // Si no tiene texto el buscador, no se filtra por el buscador (directamente sería true)
+        if (haBuscado){
+            esBusqueda = titulo.includes(buscado) // Si el titulo incluye lo que se ha buscado es true. Si no, es false y no se muestra
+        } else {
+            esBusqueda = true;
+        }
+
+    });
+}
+
+

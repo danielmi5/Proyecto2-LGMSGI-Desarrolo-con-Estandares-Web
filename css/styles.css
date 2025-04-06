@@ -643,6 +643,8 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
     flex-wrap: wrap;
 }
 
+
+
 /* sección servicios*/
 
 .servicios{
@@ -660,9 +662,79 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
     color: var(--titulo-claro);
 }
 
+/* filtros servicios */
+
+.filtros{
+    width: 100%; height: fit-content;
+    margin: 1rem 0 1rem 0;
+    padding: 2rem;
+    background: var(--fondo-secciones);
+    border: var(--borde);
+    display: flex;
+    flex-direction: row;
+
+}
+
+.filtros__form{
+    width: 100%; height: 100%;
+}
+
+.filtros label{
+    width: 5%;
+    color: var(--titulo-claro);
+    font-size: 13px;
+}
+
+.filtros__buscador{
+    width: 60%; height: 2rem;
+    border: var(--borde-inputs);
+    background: var(--fondo-inputs);
+    border-radius: 10px 0px 0px 10px;
+    padding: 0 10px;
+}
+
+.filtros__filtro{
+    width: 20%; height: fit-content;
+    background: transparent;
+}
+
+.filtros__filtro {
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 8px;
+    color: #111827;
+    border: none;
+}
+
+.filtros__filtro option {
+    background-color: #1f2937;
+    color: #f9fafb;
+    padding: 10px;
+    font-size: 15px;
+}
+
+.filtros_boton {
+    background: var(--color-boton) ;
+    color: var(--texto-claro);
+    border: none;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all ease 0.5s;
+}
+
+
+
+.filtros_boton:hover {
+    background-color: var(--color-boton-hover);
+    transform: translateY(4px);
+}
+
 .servicios__articulo{
     width: 100%; min-height: 25rem; height: fit-content;
 
+    border-top: 4px solid #222;
     border-bottom: 1px solid #222;
     padding: 2rem 0;
 
@@ -672,13 +744,17 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
 }
 
 .servicio__imagen{
-    width: 40%; max-height: 20rem; object-fit: cover;
+    width: 40%; max-height: 100%; object-fit: cover; /* max-height: 20rem*/
     box-shadow:4px 6px black;
 }
 
 .servicios__articulo__info{
     width: 70%; height: 100%;
     color: var(--texto-claro);
+}
+
+.servicios__articulo p{
+    font-size: 14px;
 }
 
 .servicio__titulo{
@@ -695,6 +771,11 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
     padding-left: 0.5rem;
 }
 
+.servicio__caracteristicas{
+    border-top: var(--borde);
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+}
 /*sección testimonios*/
 
 .testimonios{
