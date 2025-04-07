@@ -344,32 +344,33 @@ botonDarkMode.addEventListener("change", darkMode);
 
 
 //============ FORMULARIO ===================================
-/*
-const form = document.querySelector('.formulario__form');
-const inputs = form.querySelectorAll('input, textarea');
-
-Array.from(inputs).forEach(input => {
-    console.log(input.name);
-})
-
-form.addEventListener('submit', function(e) {
-    e.preventDefault(); // Evita el envío del formulario
-
-    let formOk = true;
-    //Verificación última de que todo está correcto, en caso de que no cancela el envío
-    inputs.forEach(input => verificarInput(input));
-    //TODO: Que verificarInput() devuelva un booleano para saber si está correcto o no el formulario, si no lo está modificar formOk con false y luego realizar lo necesario.
-
-    console.log('Enviando formulario...');
-    console.log(inputs);
-
-});
 
 
-inputs.forEach(input => {
-    localStorage.removeItem(input.name);
-    input.addEventListener('input', (event) => verificarInput(event.target));
-});
+const form = document.querySelector(".formulario__form");
+if (form) {
+    const inputs = form.querySelectorAll("input, textarea");
+    
+    form.addEventListener("submit", function(e) {
+        e.preventDefault(); // Evita el envío del formulario
+    
+        let formOk = true;
+        //Verificación última de que todo está correcto, en caso de que no cancela el envío
+        inputs.forEach(input => verificarInput(input));
+        //TODO: Que verificarInput() devuelva un booleano para saber si está correcto o no el formulario, si no lo está modificar formOk con false y luego realizar lo necesario.
+    
+        console.log("Enviando formulario...");
+        console.log(inputs);
+    
+    });
+    
+    
+    inputs.forEach(input => {
+        localStorage.removeItem(input.name);
+        input.addEventListener('input', (event) => verificarInput(event.target));
+    });
+} 
+
+
 
 function verificarInput(input) {
     switch (input.name) {
@@ -497,11 +498,14 @@ function eliminarError(input) {
     }
 }
 
-*/
+
 
 /*========GALERÍA===========*/
 const botonAgregar = document.querySelector(".boton_aniadir");
-botonAgregar.addEventListener('click', aniadirImagen)
+
+if (botonAgregar){
+    botonAgregar.addEventListener('click', aniadirImagen);
+}
 
 const botonesEliminar = document.getElementsByClassName("boton_eliminar")
 Array.from(botonesEliminar).forEach(boton => boton.addEventListener('click', function (){
@@ -549,34 +553,68 @@ function aniadirImagen() {
 
 //=============== FILTROS =================
 
-const formFiltros = document.querySelector(".filtros__form")
-const seccionServicios = document.querySelector(".servicios")
-const servicios = document.querySelectorAll('.servicios__articulo');
 
-formFiltros.addEventListener('submit', function (evento) {
-    evento.preventDefault();
-    filtrarServicios();
-});
+const formFiltros = document.querySelector(".filtros__form");
+const seccionServicios = document.querySelector(".servicios");
+const servicios = seccionServicios.querySelectorAll("article");
+
+
+//Solo si existe
+if (formFiltros){
+    formFiltros.addEventListener('submit', function (evento) {
+        evento.preventDefault();
+        filtrarServicios();
+    });
+}
+
+
 
 function filtrarServicios() {
     const buscado = seccionServicios.querySelector(".filtros__buscador").value.trim().toLowerCase();
     const filtro  = seccionServicios.querySelector(".filtros__filtro").value;
 
-    const haBuscado = buscado === " "
+    const mapaBusqueda = new Map();
+    const articulosOrdenadosPorFiltro = [];
+
+    const haBuscado = buscado === ""
+
 
     servicios.forEach(servicio => {
         const titulo = servicio.querySelector('.servicio__titulo').textContent.toLowerCase();
 
-        const precio = servicio.querySelector('.servicio_precio span').textContent.split(" ")[0] // Solo coge el número del precio
-        const fecha = servicio.querySelector('.servicio_fecha span').textContent;
+        const precio = servicio.querySelector('.servicio_precio').textContent.split(" ")[1] // Solo coge el número del precio
+        const fecha = servicio.querySelector('.servicio_fecha').textContent.split(" ")[1];
 
         let esBusqueda;
 
-        // Si no tiene texto el buscador, no se filtra por el buscador (directamente sería true)
-        if (haBuscado){
+        // Si no tiene texto el buscador (se ejecuta el else y..), no se filtra por el buscador (directamente sería true)
+        if (!haBuscado){
             esBusqueda = titulo.includes(buscado) // Si el titulo incluye lo que se ha buscado es true. Si no, es false y no se muestra
         } else {
             esBusqueda = true;
+        }
+
+        
+
+        //TODO: Hacer por cada caso el filtro de los servicios
+        if (esBusqueda){
+            switch (filtro) {
+                case "Todos":
+                    
+                    break;
+                case "No recientes":
+                    
+                    break;
+                case "Recientes":
+                    
+                    break;
+                case "Precio de mayor a menor":
+                    
+                    break;
+                case "Precio de menor a mayor":
+                    
+                    break;
+            }
         }
 
     });
