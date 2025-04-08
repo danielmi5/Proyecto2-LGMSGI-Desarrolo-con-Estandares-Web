@@ -693,12 +693,12 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
     padding: 0 10px;
 }
 
-.filtros__filtro{
+.filtros__orden{
     width: 20%; height: fit-content;
     background: transparent;
 }
 
-.filtros__filtro {
+.filtros__orden {
     font-size: 16px;
     padding: 10px;
     border-radius: 8px;
@@ -706,7 +706,7 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
     border: none;
 }
 
-.filtros__filtro option {
+.filtros__orden option {
     background-color: #1f2937;
     color: #f9fafb;
     padding: 10px;

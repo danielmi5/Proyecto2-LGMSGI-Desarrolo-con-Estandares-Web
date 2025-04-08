@@ -555,69 +555,98 @@ function aniadirImagen() {
 
 
 const formFiltros = document.querySelector(".filtros__form");
-const seccionServicios = document.querySelector(".servicios");
-const servicios = seccionServicios.querySelectorAll("article");
+const seccionCompletaServicios = document.querySelector(".servicios");
+const seccionServicios = document.querySelector(".servicios_articulos");
 
+/*Esto es para guardar los servicios al principio, ya que al realizar los filtros puede que se eliminen algunos articulos */
+let contador = 0;
+const servicios = [];
+if (contador === 0) {
+    seccionCompletaServicios.querySelectorAll(".servicios__articulo").forEach(servicio => {
+        servicios.push(servicio);
+    });
+    contador++;
+}
 
 //Solo si existe
 if (formFiltros){
     formFiltros.addEventListener('submit', function (evento) {
         evento.preventDefault();
-        filtrarServicios();
+        ordenarServicios(obtenerServiciosBuscados());
     });
 }
 
 
 
-function filtrarServicios() {
-    const buscado = seccionServicios.querySelector(".filtros__buscador").value.trim().toLowerCase();
-    const filtro  = seccionServicios.querySelector(".filtros__filtro").value;
+function obtenerServiciosBuscados() {
+    const buscado = seccionCompletaServicios.querySelector(".filtros__buscador").value.trim().toLowerCase();
 
-    const mapaBusqueda = new Map();
-    const articulosOrdenadosPorFiltro = [];
+    const articulosBuscados = [];
 
     const haBuscado = buscado === ""
 
+    if (haBuscado) {
+        return servicios;
+    } else {
+        servicios.forEach(servicio => {
+            const titulo = servicio.querySelector('.servicio__titulo').textContent.toLowerCase();
+            if (titulo.includes(buscado)) articulosBuscados.push(servicio);
+        })
+        return articulosBuscados;
+    }
+}
 
-    servicios.forEach(servicio => {
-        const titulo = servicio.querySelector('.servicio__titulo').textContent.toLowerCase();
+function ordenarServicios(serviciosAOrdenar) {
+    seccionServicios.innerHTML = ""; //Elimino el contenido de la sección
+    const filtro  = seccionCompletaServicios.querySelector(".filtros__orden").value;
 
-        const precio = servicio.querySelector('.servicio_precio').textContent.split(" ")[1] // Solo coge el número del precio
-        const fecha = servicio.querySelector('.servicio_fecha').textContent.split(" ")[1];
 
-        let esBusqueda;
 
-        // Si no tiene texto el buscador (se ejecuta el else y..), no se filtra por el buscador (directamente sería true)
-        if (!haBuscado){
-            esBusqueda = titulo.includes(buscado) // Si el titulo incluye lo que se ha buscado es true. Si no, es false y no se muestra
-        } else {
-            esBusqueda = true;
+    if (serviciosAOrdenar.length === 0) {
+        const mensaje = document.createElement("p");
+        mensaje.textContent = "No existen servicios con esa búsqueda.";
+        mensaje.style.padding = "2rem 0 1.5rem 0";
+        mensaje.style.fontSize = "1.5rem";
+        mensaje.style.textAlign = "center";
+
+        seccionServicios.appendChild(mensaje);
+    } else{
+        //Según el filtro elegido, se ordena de una manera
+        switch (filtro) {
+            case "Todos":
+                serviciosAOrdenar.forEach(servicio => {seccionServicios.appendChild(servicio);})
+                break;
+            case "Más antiguos":
+                serviciosAOrdenar.sort((a, b) => {
+                    const fechaA = new Date(a.querySelector('.servicio_fecha').textContent.split(" ")[1]);
+                    const fechaB = new Date(b.querySelector('.servicio_fecha').textContent.split(" ")[1]);
+                    return fechaA - fechaB
+                }).forEach(servicio => {seccionServicios.appendChild(servicio);});
+                break;
+            case "Recientes":
+                serviciosAOrdenar.sort((a, b) => {
+                    const fechaA = new Date(a.querySelector('.servicio_fecha').textContent.split(" ")[1]);
+                    const fechaB = new Date(b.querySelector('.servicio_fecha').textContent.split(" ")[1]);
+                    return fechaB - fechaA
+                }).forEach(servicio => {seccionServicios.appendChild(servicio);});
+                break;
+            case "Precio de mayor a menor":
+                serviciosAOrdenar.sort((a, b) => {
+                    const precioA = a.querySelector('.servicio_precio').textContent.split(" ")[1]
+                    const precioB = b.querySelector('.servicio_precio').textContent.split(" ")[1] // Solo coge el número del precio
+                    return precioB - precioA
+                }).forEach(servicio => {seccionServicios.appendChild(servicio);});
+                break;
+            case "Precio de menor a mayor":
+                serviciosAOrdenar.sort((a, b) => {
+                    const precioA = a.querySelector('.servicio_precio').textContent.split(" ")[1]
+                    const precioB = b.querySelector('.servicio_precio').textContent.split(" ")[1] // Solo coge el número del precio
+                    return precioA - precioB
+                }).forEach(servicio => {seccionServicios.appendChild(servicio);});
+                break;
         }
+    }
 
-        
-
-        //TODO: Hacer por cada caso el filtro de los servicios
-        if (esBusqueda){
-            switch (filtro) {
-                case "Todos":
-                    
-                    break;
-                case "No recientes":
-                    
-                    break;
-                case "Recientes":
-                    
-                    break;
-                case "Precio de mayor a menor":
-                    
-                    break;
-                case "Precio de menor a mayor":
-                    
-                    break;
-            }
-        }
-
-    });
 }
 
 
