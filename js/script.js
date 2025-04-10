@@ -585,14 +585,18 @@ function obtenerServiciosBuscados() {
     const haBuscado = buscado === ""
 
     if (haBuscado) {
-        return servicios;
+        servicios.forEach(servicio => {
+            if(seFiltra(servicio)) articulosBuscados.push(servicio);
+        })
     } else {
         servicios.forEach(servicio => {
             const titulo = servicio.querySelector('.servicio__titulo').textContent.toLowerCase();
-            if (titulo.includes(buscado)) articulosBuscados.push(servicio);
+            if (titulo.includes(buscado)) {
+                if(seFiltra(servicio)) articulosBuscados.push(servicio);
+            }
         })
-        return articulosBuscados;
     }
+    return articulosBuscados;
 }
 
 function ordenarServicios(serviciosAOrdenar) {
@@ -615,15 +619,15 @@ function ordenarServicios(serviciosAOrdenar) {
                 break;
             case "Más antiguos":
                 serviciosAOrdenar.sort((a, b) => {
-                    const fechaA = new Date(a.querySelector('.servicio_fecha').textContent.split(" ")[1]);
-                    const fechaB = new Date(b.querySelector('.servicio_fecha').textContent.split(" ")[1]);
+                    const fechaA = convertirFechaADate(a.querySelector('.servicio_fecha').textContent.split(" ")[1]);
+                    const fechaB = convertirFechaADate(b.querySelector('.servicio_fecha').textContent.split(" ")[1]);
                     return fechaA - fechaB
                 }).forEach(servicio => {seccionServicios.appendChild(servicio);});
                 break;
             case "Recientes":
                 serviciosAOrdenar.sort((a, b) => {
-                    const fechaA = new Date(a.querySelector('.servicio_fecha').textContent.split(" ")[1]);
-                    const fechaB = new Date(b.querySelector('.servicio_fecha').textContent.split(" ")[1]);
+                    const fechaA = convertirFechaADate(a.querySelector('.servicio_fecha').textContent.split(" ")[1]);
+                    const fechaB = convertirFechaADate(b.querySelector('.servicio_fecha').textContent.split(" ")[1]);
                     return fechaB - fechaA
                 }).forEach(servicio => {seccionServicios.appendChild(servicio);});
                 break;
@@ -646,26 +650,46 @@ function ordenarServicios(serviciosAOrdenar) {
 
 }
 
-function filtrarServicios(servicioAFiltrar){
-    const inputsFiltros = formFiltros.querySelectorAll(".filtros__extras input");
-    const precioServicio = parseFloat(servicioAFiltrar.querySelector('.servicio_precio').textContent.split(" ")[1]);
-    const fechaServicio = new Date(servicioAFiltrar.querySelector('.servicio_fecha').textContent.split(" ")[1]);
+function seFiltra(servicioAFiltrar){
+    const precioServicio = parseFloat(servicioAFiltrar.querySelector(".servicio_precio").textContent.split(" ")[1]);
+    const fechaServicio = convertirFechaADate(servicioAFiltrar.querySelector(".servicio_fecha").textContent.split(" ")[1]);
 
     let seFiltra = true;
 
-    
+    if (!verificarPrecioFiltro(precioServicio) || !verificarFechaFiltro(fechaServicio)) {
+        seFiltra = false;
+    }
 
     return seFiltra;
 }
 
+function verificarPrecioFiltro(precio){
+    const precioMin = formFiltros.querySelector(".input_precioMin").value;
+    const precioMax = formFiltros.querySelector(".input_precioMax").value;
+    if(precio <= precioMin || precioMax <= precio) return false; else return true;
+}
+
+function verificarFechaFiltro(fecha){
+    const fechaMin = new Date(formFiltros.querySelector(".input_fechaMin").value);
+    const fechaMax = new Date(formFiltros.querySelector(".input_fechaMax").value);
+
+    if (fechaMin === "" && fechaMax === "") return true;
+    else if (fechaMin === "") if (fecha >= fechaMax) return false; else return true;
+    else if (fechaMax === "") if (fecha <= fechaMin) return false; else return true;
+    else {
+        if(fecha <= fechaMin || fechaMax <= fecha) return false; else return true;
+    }
+
+}
+
 // FUNCIÓN PARA MOSTRAR/NO MOTRAR FILTROS
 
-const botonMostrarFiltros = formFiltros.querySelector(".boton_mostrar_filtros")
-const filtros = formFiltros.querySelector(".filtros__extras")
+const botonMostrarFiltros = formFiltros.querySelector(".boton_mostrar_filtros");
+const filtros = formFiltros.querySelector(".filtros__extras");
 
 if (botonMostrarFiltros && filtros) {
     botonMostrarFiltros.addEventListener('click', function (){
-        mostrarFiltro(filtros, "mostrarFiltros")
+        mostrarFiltro(filtros, "mostrarFiltros");
     });
 }
 
@@ -703,5 +727,15 @@ function actualizarRangoPrecio() {
         })
     }
 }
+
+
+
+//FUNCIÓN PARA CONVERTIR LA FECHA QUE UTILIZO EN LOS SERVICIOS (TIENE OTRO FORMATO) en un objeto Date
+
+function convertirFechaADate(fecha) {
+    const partes = fecha.split("-");
+    return new Date(partes[2], partes[1] - 1, partes[0]); // En JS el número de mes empieza en 0 con Enero por eso hay que restar 1
+}
+
 
 

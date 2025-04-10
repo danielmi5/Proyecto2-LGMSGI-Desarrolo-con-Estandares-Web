@@ -740,10 +740,10 @@ input[type="checkbox"]:checked + .darkmode__toggle::before {
 }
 
 .boton_mostrar_filtros{
+    width: fit-content; height: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: fit-content; height: 2rem;
     background: transparent;
     color: var(--titulo-claro);
     border: none;
