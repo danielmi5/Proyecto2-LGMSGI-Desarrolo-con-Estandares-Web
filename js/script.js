@@ -549,8 +549,6 @@ function aniadirImagen() {
     }
 }
 
-
-
 //=============== FILTROS =================
 
 
@@ -570,6 +568,7 @@ if (contador === 0) {
 
 //Solo si existe
 if (formFiltros){
+    actualizarRangoPrecio();
     formFiltros.addEventListener('submit', function (evento) {
         evento.preventDefault();
         ordenarServicios(obtenerServiciosBuscados());
@@ -599,8 +598,6 @@ function obtenerServiciosBuscados() {
 function ordenarServicios(serviciosAOrdenar) {
     seccionServicios.innerHTML = ""; //Elimino el contenido de la sección
     const filtro  = seccionCompletaServicios.querySelector(".filtros__orden").value;
-
-
 
     if (serviciosAOrdenar.length === 0) {
         const mensaje = document.createElement("p");
@@ -647,6 +644,64 @@ function ordenarServicios(serviciosAOrdenar) {
         }
     }
 
+}
+
+function filtrarServicios(servicioAFiltrar){
+    const inputsFiltros = formFiltros.querySelectorAll(".filtros__extras input");
+    const precioServicio = parseFloat(servicioAFiltrar.querySelector('.servicio_precio').textContent.split(" ")[1]);
+    const fechaServicio = new Date(servicioAFiltrar.querySelector('.servicio_fecha').textContent.split(" ")[1]);
+
+    let seFiltra = true;
+
+    
+
+    return seFiltra;
+}
+
+// FUNCIÓN PARA MOSTRAR/NO MOTRAR FILTROS
+
+const botonMostrarFiltros = formFiltros.querySelector(".boton_mostrar_filtros")
+const filtros = formFiltros.querySelector(".filtros__extras")
+
+if (botonMostrarFiltros && filtros) {
+    botonMostrarFiltros.addEventListener('click', function (){
+        mostrarFiltro(filtros, "mostrarFiltros")
+    });
+}
+
+//Muestra o no muestra un contenedor pasado por argumento y una clave para identificar si está mostrado o no
+function mostrarFiltro(contenedor, clave){
+    if (localStorage.getItem(clave) == null){
+        contenedor.style.display = "flex";
+        localStorage.setItem(clave, "true");
+    } else {
+        contenedor.style.display = "none";
+        localStorage.removeItem(clave);
+    }
+}
+
+// FUNCIÓN PARA ACTUALIZAR EL RANGO DE PRECIO DE LOS SERVICIOS
+
+function actualizarRangoPrecio() {
+    const labelPrecioMin = formFiltros.querySelector(".label_precioMin");
+    const labelPrecioMax = formFiltros.querySelector(".label_precioMax");
+
+    const inputPrecioMin = formFiltros.querySelector(".input_precioMin");
+    const inputPrecioMax = formFiltros.querySelector(".input_precioMax");
+
+    if (inputPrecioMin && inputPrecioMax) {
+        labelPrecioMin.textContent = "Precio mínimo:  " + inputPrecioMin.value;
+        labelPrecioMax.textContent = "Precio máximo:  " + inputPrecioMax.value;
+
+        inputPrecioMin.addEventListener("input", function () {
+            inputPrecioMax.min = inputPrecioMin.value;
+            labelPrecioMin.textContent = "Precio mínimo:  " + inputPrecioMin.value;
+        })
+        inputPrecioMax.addEventListener("input", function () {
+            inputPrecioMin.max = inputPrecioMax.value;
+            labelPrecioMax.textContent = "Precio máximo:  " + inputPrecioMax.value;
+        })
+    }
 }
 
 

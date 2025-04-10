@@ -38,17 +38,42 @@
 
             <section class="filtros">
                 <form class="filtros__form" method="GET">
-                    <label>Buscar servicio:</label>
-                    <input type="text" name="buscador" placeholder="Buscar..." class="filtros__buscador">
+                    <fieldset class="filtros__busqueda">
+                        <label>Buscar servicio:</label>
+                        <input type="text" name="buscador" placeholder="Buscar..." class="filtros__buscador">
 
-                    <label>Filtrar por:</label>
-                    <select class="filtros__orden" name="filtro">
-                        <option>Todos</option>
-                        <option>Más antiguos</option>
-                        <option>Recientes</option>
-                        <option>Precio de mayor a menor</option>
-                        <option>Precio de menor a mayor</option>
-                    </select>
+                        <label>Ordenar:</label>
+                        <select class="filtros__orden" name="filtro">
+                            <option>Todos</option>
+                            <option>Más antiguos</option>
+                            <option>Recientes</option>
+                            <option>Precio de mayor a menor</option>
+                            <option>Precio de menor a mayor</option>
+                        </select>
+
+                    </fieldset>
+
+                    <div class="contenedor_filtros__extras">
+                        <!-- Botón para mostrar filtros -->
+                        <button type="button" class="boton_mostrar_filtros">
+                            <img src="https://static.vecteezy.com/system/resources/previews/001/504/972/non_2x/search-icon-free-vector.jpg" alt="Boton de filtros" class="filtro_imagen">
+                            Filtros
+                        </button>
+
+                        <fieldset class="filtros__extras">
+                            <legend>Sistema de filtros</legend>
+
+                            <label class="label_precioMin">Precio mínimo:</label>
+                            <input type="range" class="input_precioMin" min="0" max="10000" value="0">
+
+                            <label class="label_precioMax">Precio máximo:</label>
+                            <input type="range" class="input_precioMax" min="0" max="10000" value="10000">
+
+                            <label>Fecha:</label>
+                            <input type="date" name="fecha_inicio" placeholder="Desde">
+                            <input type="date" name="fecha_fin" placeholder="Hasta">
+                        </fieldset>
+                    </div>
 
                     <button type="submit" class="filtros_boton">Buscar</button>
                 </form>
