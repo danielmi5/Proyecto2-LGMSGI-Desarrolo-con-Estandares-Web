@@ -522,52 +522,87 @@ function eliminarError(input) {
 
 /*========GALERÍA===========*/
 const botonAgregar = document.querySelector(".boton_aniadir");
+const imagenes = document.querySelector(".galeria_lista");
 
-if (botonAgregar){
-    botonAgregar.addEventListener('click', aniadirImagen);
-}
-
-const botonesEliminar = document.getElementsByClassName("boton_eliminar")
-Array.from(botonesEliminar).forEach(boton => boton.addEventListener('click', function (){
-    boton.parentElement.remove();
-}))
-
-// Añade una imagen a la galería
-function aniadirImagen() {
-    const imagen = document.querySelector(".input_imagen");
-    const archivo = imagen.files[0]; // Al elegir la imagen se guarda en files (array de objetos File) como objeto File, al no tener el input el atributo multiple solo se puede seleccionar una imagen, por lo que su índice sería el 0. ** En caso de utilizar multiple habría que recorrer el array, añadiendo cada imagen
-    const imagenes = document.querySelector(".galeria_lista")
-
-    // Cuando hay un clic en la lista de imagenes, comprueba si es por el boton de eliminar, si lo es elimina el elemento padre que sería el contenedor de la imagen
-    imagenes.addEventListener("click", (evento) => {
-        if (evento.target.classList.contains("boton_eliminar")) {
-            evento.target.parentElement.remove();
-        }
-    })
-    // Si existe la imagen la lee y la añade a la galería
-    if (archivo) {
+// Carga las imágenes guardadas al iniciar
+document.addEventListener("DOMContentLoaded", () => {
+    const imagenesGuardadas = JSON.parse(localStorage.getItem("imagenes")) || [];
+    imagenesGuardadas.forEach(ruta => {
         const contenedor = document.createElement("div");
         contenedor.classList.add("contenedor_imagen");
 
         const img = document.createElement("img");
         img.classList.add("galeria__imagen");
-
-        const lector = new FileReader();
-        lector.onload = function (e) {
-            img.src = e.target.result; //Guarda la url de la imagen leída en la ruta del nuevo elemento img
-        };
-        //Al leer el archivo lo convierte a un Data URL (en base64 para leer la imagen)
-        lector.readAsDataURL(archivo);
+        img.src = ruta;
 
         const botonEliminar = document.createElement("button");
         botonEliminar.classList.add("boton_eliminar");
         botonEliminar.textContent = "Eliminar";
 
+        botonEliminar.addEventListener("click", () => {
+            contenedor.remove();
+            eliminarImagenDeLocalStorage(ruta);
+        });
+
         contenedor.appendChild(img);
         contenedor.appendChild(botonEliminar);
         imagenes.appendChild(contenedor);
+    });
+});
 
-    }
+// Añade una imagen nueva
+if (botonAgregar) {
+    botonAgregar.addEventListener("click", () => {
+        const archivo = document.querySelector(".input_imagen").files[0];
+        if (archivo && archivo.type.startsWith("image/")) {
+            const lector = new FileReader();
+            lector.onload = (e) => {
+                const ruta = e.target.result;
+                agregarImagen(ruta);
+                guardarImagen(ruta);
+            };
+            lector.readAsDataURL(archivo);  //Al leer el archivo lo convierte a un Data URL (en base64 para leer la imagen)
+        } else {
+            alert("Selecciona una imagen válida");
+        }
+    });
+}
+
+// Función para agregar imagen al DOM
+function agregarImagen(src) {
+    const contenedor = document.createElement("div");
+    contenedor.classList.add("contenedor_imagen");
+
+    const img = document.createElement("img");
+    img.classList.add("galeria__imagen");
+    img.src = src;
+
+    const botonEliminar = document.createElement("button");
+    botonEliminar.classList.add("boton_eliminar");
+    botonEliminar.textContent = "Eliminar";
+
+    botonEliminar.addEventListener("click", () => {
+        contenedor.remove();
+        eliminarImagenDeLocalStorage(src);
+    });
+
+    contenedor.appendChild(img);
+    contenedor.appendChild(botonEliminar);
+    imagenes.appendChild(contenedor);
+}
+
+// Guarda la ruta de la imagen en localStorage
+function guardarImagen(src) {
+    const imagenesGuardadas = JSON.parse(localStorage.getItem("imagenes")) || [];
+    imagenesGuardadas.push(src);
+    localStorage.setItem("imagenes", JSON.stringify(imagenesGuardadas));
+}
+
+// Elimina una imagen de localStorage
+function eliminarImagenDeLocalStorage(src) {
+    const imagenesGuardadas = JSON.parse(localStorage.getItem("imagenes")) || [];
+    const nuevasImagenes = imagenesGuardadas.filter(imagen => imagen !== src);
+    localStorage.setItem("imagenes", JSON.stringify(nuevasImagenes));
 }
 
 //=============== FILTROS =================
