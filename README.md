@@ -343,17 +343,17 @@ AL principio guardo en una constante el formulario de contacto a través de su c
 
 https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/8b66e3d9a4a0f813c620801487130eba93b447c7/js/script.js#L377-L520
 
-- `**verficarInput()**`: Valida un campo específico del formulario dependiendo de su name. Usa una estructura switch para aplicar comprobaciones según el tipo de campo. Si el valor no cumple con el patrón o la condición, se muestra un mensaje de error con `lanzarError()`. Si es válido, se limpia cualquier error anterior con `eliminarError()` y se muestra un mensaje correcto con `lanzarBien()`.
+- **`verficarInput()`**: Valida un campo específico del formulario dependiendo de su name. Usa una estructura switch para aplicar comprobaciones según el tipo de campo. Si el valor no cumple con el patrón o la condición, se muestra un mensaje de error con `lanzarError()`. Si es válido, se limpia cualquier error anterior con `eliminarError()` y se muestra un mensaje correcto con `lanzarBien()`.
 
-- `**comprobarForm()**`: Comprueba si el formulario está libre de errores. Revisa si hay mensajes de error (mediante su clase .linea-error). Si encuentra alguno, devuelve false; si no hay errores, devuelve true.
+- **`comprobarForm()`**: Comprueba si el formulario está libre de errores. Revisa si hay mensajes de error (mediante su clase .linea-error). Si encuentra alguno, devuelve false; si no hay errores, devuelve true.
 
-- `**validarPatron(valor, patron)**`: Recibe un valor y una cadena que representa una expresión regular (regex). Crea una expresión regular a partir del patrón y verifica si el valor lo cumple mediante el método test() (devuelve true si coincide el regex y la cadena, sino false). Devuelve true si es válido o false si no lo es. Utilizado para comprobar campos que deban seguir un formato específico (teléfono, correo).
+- **`validarPatron(valor, patron)`**: Recibe un valor y una cadena que representa una expresión regular (regex). Crea una expresión regular a partir del patrón y verifica si el valor lo cumple mediante el método test() (devuelve true si coincide el regex y la cadena, sino false). Devuelve true si es válido o false si no lo es. Utilizado para comprobar campos que deban seguir un formato específico (teléfono, correo).
 
-- `**lanzarError(mensaje, input)**`: Muestra un mensaje de error debajo del campo si todavía no existe uno para ese input. Se crea un elemento div (contenedor del error) mediante `createElement` con la clase linea-error y una clase personalizada para identificar con que input está (.msj-nombreInput). También se guarda en localStorage que indica que se está utilizando un mensaje de error (para evitar repetir errores si ya está uno visible en ese input). Para añadirlo justo debajo del input, sobre el propio input utilizo el método `insertAdjacentElement()` pasando como parámetro "afterend" (indica que se añada justo después de este) y el elemento a añadir (el mensaje).
+- **`lanzarError(mensaje, input)`**: Muestra un mensaje de error debajo del campo si todavía no existe uno para ese input. Se crea un elemento div (contenedor del error) mediante `createElement` con la clase linea-error y una clase personalizada para identificar con que input está (.msj-nombreInput). También se guarda en localStorage que indica que se está utilizando un mensaje de error (para evitar repetir errores si ya está uno visible en ese input). Para añadirlo justo debajo del input, sobre el propio input utilizo el método `insertAdjacentElement()` pasando como parámetro "afterend" (indica que se añada justo después de este) y el elemento a añadir (el mensaje).
 
-- `**lanzarBien(mensaje, input)**`: Exactamente igual que en `lanzarError`, pero no se mantiene, se elimina después de 1s.
+- **`lanzarBien(mensaje, input)`**: Exactamente igual que en `lanzarError`, pero no se mantiene, se elimina después de 1s.
 
-- `**eliminarError(input)**`: Elimina el mensaje de error del input. Obtiene el mensaje, mediante su clase personalizada para identificarlo. Si existe, lo elimina y elimina del localStorage su "marca" (que indicaba que tenía un mensaje de error).
+- **`eliminarError(input)`**: Elimina el mensaje de error del input. Obtiene el mensaje, mediante su clase personalizada para identificarlo. Si existe, lo elimina y elimina del localStorage su "marca" (que indicaba que tenía un mensaje de error).
 
 ### GALERÍA INTERACTIVA
 
@@ -381,17 +381,17 @@ Si existe el formulario de los filtros se ejecuta. Primero, hace una llamada a `
 
 https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/b07a2fda5013726fa71afe2b545ff1702aa7d386/js/script.js#L596-L709
 
-- `**obtenerServiciosBuscados()**`: Devuelve un array con los servicios que coinciden con la búsqueda del usuario y que además cumplen los filtros seleccionados. Si no hay texto de búsqueda, se devuelven todos los servicios que pasen los filtros. Si hay texto de búsqueda, se compara con el título del servicio y se devuelve solo si también cumple con los filtros, usando `seFiltra()`.
+- **`obtenerServiciosBuscados()`**: Devuelve un array con los servicios que coinciden con la búsqueda del usuario y que además cumplen los filtros seleccionados. Si no hay texto de búsqueda, se devuelven todos los servicios que pasen los filtros. Si hay texto de búsqueda, se compara con el título del servicio y se devuelve solo si también cumple con los filtros, usando `seFiltra()`.
 
-- `**ordenarServicios(serviciosAOrdenar)**`: Ordena los servicios filtrados, recibidos como parámetro, según el filtro de orden seleccionado. Puede ordenar por fecha (más antiguos o recientes) o por precio (mayor a menor o menor a mayor). Si no hay servicios tras filtrar, muestra un mensaje de que no se encontraron resultados. Los ordeno mediante el método `sort()` y se usa `convertirFechaADate()` para convertir la fecha que utilizo (que está en otro formato) a objeto `Date`.
+- **`ordenarServicios(serviciosAOrdenar)`**: Ordena los servicios filtrados, recibidos como parámetro, según el filtro de orden seleccionado. Puede ordenar por fecha (más antiguos o recientes) o por precio (mayor a menor o menor a mayor). Si no hay servicios tras filtrar, muestra un mensaje de que no se encontraron resultados. Los ordeno mediante el método `sort()` y se usa `convertirFechaADate()` para convertir la fecha que utilizo (que está en otro formato) a objeto `Date`.
 
-- `**seFiltra(servicioAFiltrar)**`: Determina si un servicio cumple con los filtros de precio y fecha. Extrae los valores desde el DOM y llama a `verificarPrecioFiltro()` y `verificarFechaFiltro()`. Devuelve `true` solo si ambos filtros se cumplen.
+- **`seFiltra(servicioAFiltrar)`**: Determina si un servicio cumple con los filtros de precio y fecha. Extrae los valores desde el DOM y llama a `verificarPrecioFiltro()` y `verificarFechaFiltro()`. Devuelve `true` solo si ambos filtros se cumplen.
 
-- `**verificarPrecioFiltro(precio)**`: Verifica si el precio del servicio está dentro del rango establecido por los inputs `input_precioMin` y `input_precioMax`. Si el precio está fuera de los límites, devuelve `false`; si está dentro, devuelve `true`.
+- **`verificarPrecioFiltro(precio)`**: Verifica si el precio del servicio está dentro del rango establecido por los inputs `input_precioMin` y `input_precioMax`. Si el precio está fuera de los límites, devuelve `false`; si está dentro, devuelve `true`.
 
-- `**verificarFechaFiltro(fecha)**`: Comprueba si la fecha del servicio está dentro del rango de fechas introducido. Si ambos campos están vacíos, devuelve `true`. Si solo uno está vacío, verifica si la fecha cumple con el otro límite. Si hay ambos, asegura que la fecha esté entre los dos. Devuelve `true` si se cumple y `false` si no se cumple.
+- **`verificarFechaFiltro(fecha)`**: Comprueba si la fecha del servicio está dentro del rango de fechas introducido. Si ambos campos están vacíos, devuelve `true`. Si solo uno está vacío, verifica si la fecha cumple con el otro límite. Si hay ambos, asegura que la fecha esté entre los dos. Devuelve `true` si se cumple y `false` si no se cumple.
 
-- `**actualizarRangoPrecio()**`: Actualiza dinámicamente el valor del label (añadiendo el valor actual) y los valores mínimos y máximos de los inputs de precio en el formulario de filtros. Al llamar a la función, instancio los labels (`.label_precioMin` y `.label_precioMax`) y los inputs (`.input_precioMin` y `.input_precioMax`). Al principio si los inputs existen, añade los valores actuales de los inputs de tipo range al contenido (texto) de los labels. Además, añade eventos `input` a ambos inputs para:
+- **`actualizarRangoPrecio()`**: Actualiza dinámicamente el valor del label (añadiendo el valor actual) y los valores mínimos y máximos de los inputs de precio en el formulario de filtros. Al llamar a la función, instancio los labels (`.label_precioMin` y `.label_precioMax`) y los inputs (`.input_precioMin` y `.input_precioMax`). Al principio si los inputs existen, añade los valores actuales de los inputs de tipo range al contenido (texto) de los labels. Además, añade eventos `input` a ambos inputs para:
   - Asegurar que el valor mínimo no supere al máximo y viceversa.
   - Reflejar inmediatamente el nuevo valor en su label correspondiente.
 
@@ -421,25 +421,25 @@ Segunda (desde carrito), instancio carrito (la sección) y si existe llama a `co
 
 #### Funciones utilizadas
 
-- `**guardarInfoId()**`: Crea un objetos que almacenan la `id` y el `título` de cada servicio visible, y son añadidos a `objetosServicio`. Esto sirve para identificar fácilmente los servicios más adelante. Solo se ejecuta una vez (cuando `contCar` es 0), para evitar duplicados. También guarda en `localStorage` el número total de servicios (`numServicios`) como string, para que pueda ser consultado después desde distintas páginas.
+- **`guardarInfoId()`**: Crea un objetos que almacenan la `id` y el `título` de cada servicio visible, y son añadidos a `objetosServicio`. Esto sirve para identificar fácilmente los servicios más adelante. Solo se ejecuta una vez (cuando `contCar` es 0), para evitar duplicados. También guarda en `localStorage` el número total de servicios (`numServicios`) como string, para que pueda ser consultado después desde distintas páginas.
 
 https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/b07a2fda5013726fa71afe2b545ff1702aa7d386/js/script.js#L809-L926
 
-- `**aniadirOEliminarServicios(evento)**`: Añade o elimina un servicio del carrito al hacer clic en el botón correspondiente. Verifica si ya está en `localStorage` mediante su ID personalizada (`Carrito + id`). Si no está, guarda su HTML en el almacenamiento y cambia el botón a "Eliminar del carrito". Si ya está, lo elimina de `localStorage` y cambia el texto a "Añadir al carrito".
+- **`aniadirOEliminarServicios(evento)`**: Añade o elimina un servicio del carrito al hacer clic en el botón correspondiente. Verifica si ya está en `localStorage` mediante su ID personalizada (`Carrito + id`). Si no está, guarda su HTML en el almacenamiento y cambia el botón a "Eliminar del carrito". Si ya está, lo elimina de `localStorage` y cambia el texto a "Añadir al carrito".
 
-- `**obtenerServicioId(servicio)**`: Devuelve el ID de un servicio comparando su título con los objetos almacenados en `objetosServicio`. Se utiliza para obtener el número de Id que se utiliza en `localStorage` para almacenar los servicios en el carrito.
+- **`obtenerServicioId(servicio)`**: Devuelve el ID de un servicio comparando su título con los objetos almacenados en `objetosServicio`. Se utiliza para obtener el número de Id que se utiliza en `localStorage` para almacenar los servicios en el carrito.
 
-- `**aniadirACarrito(servicio)**`: Crea un nuevo elemento HTML con la información del servicio (título, precio, fecha e imagen) y lo añade al contenedor del carrito.
+- **`aniadirACarrito(servicio)`**: Crea un nuevo elemento HTML con la información del servicio (título, precio, fecha e imagen) y lo añade al contenedor del carrito.
 
-- `**cambiarTextoBotones()**`: Recorre todos los servicios visibles en la página y cambia el texto de sus botones según si están añadidos al carrito (`localStorage`) o no.
+- **`cambiarTextoBotones()`**: Recorre todos los servicios visibles en la página y cambia el texto de sus botones según si están añadidos al carrito (`localStorage`) o no.
 
-- `**eliminarDelCarrito()**`: Escucha los clics en el contenedor del carrito. Si se pulsa el botón de eliminar (`.boton_eliminar_carrito`), elimina el servicio del DOM y del `localStorage`, y luego actualiza el subtotal con `actualizarSubTotal()`.
+- **`eliminarDelCarrito()`**: Escucha los clics en el contenedor del carrito. Si se pulsa el botón de eliminar (`.boton_eliminar_carrito`), elimina el servicio del DOM y del `localStorage`, y luego actualiza el subtotal con `actualizarSubTotal()`.
 
-- `**obtenerClave(titulo)**`: Busca en `localStorage` la clave asociada al servicio cuyo título coincide con el proporcionado. Se usa desde la página del carrito para identificar correctamente el elemento a eliminar.
+- **`obtenerClave(titulo)`**: Busca en `localStorage` la clave asociada al servicio cuyo título coincide con el proporcionado. Se usa desde la página del carrito para identificar correctamente el elemento a eliminar.
 
-- `**colocarServiciosYaEnCarrito()**`: Recorre los servicios guardados en `localStorage` y los inserta en el carrito al cargar la página. Permite que los servicios añadidos anteriormente persistan entre sesiones.
+- **`colocarServiciosYaEnCarrito()`**: Recorre los servicios guardados en `localStorage` y los inserta en el carrito al cargar la página. Permite que los servicios añadidos anteriormente persistan entre sesiones.
 
-- `**actualizarSubTotal()**`: Calcula el total del precio de los servicios añadidos al carrito. Suma todos los precios y actualiza el valor del subtotal.
+- **`actualizarSubTotal()`**: Calcula el total del precio de los servicios añadidos al carrito. Suma todos los precios y actualiza el valor del subtotal.
 
 
 
