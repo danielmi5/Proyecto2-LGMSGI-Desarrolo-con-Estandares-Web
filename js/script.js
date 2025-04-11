@@ -372,7 +372,7 @@ if (form) {
     });
 }
 
-
+//Comprueba si el valor del input está correcto
 
 function verificarInput(input) {
     switch (input.name) {
@@ -452,8 +452,9 @@ function verificarInput(input) {
             break;
     }
 
-
 }
+
+//Comprueba si el formulario tiene errores
 
 function comprobarForm(){
     const mensajesError = form.querySelectorAll(".linea-error");
@@ -462,10 +463,14 @@ function comprobarForm(){
     } else return true;
 }
 
+//Valida el valor según patrón pasados por argumento
+
 function validarPatron(valor, patron) {
     const regex = new RegExp(patron);  // Convierto la cadena en una expresión regular
     return regex.test(valor);
 }
+
+//Lanza un mensaje de error
 
 function lanzarError(mensaje, input) {
     if (localStorage.getItem(input.name) == null) {
@@ -481,6 +486,8 @@ function lanzarError(mensaje, input) {
         localStorage.setItem(input.name, "true");
     }
 }
+
+//Lanza un mensaje de que está bien
 
 function lanzarBien(mensaje, input) {
     // Solo si no existe el mensaje lo lanza
@@ -499,6 +506,8 @@ function lanzarBien(mensaje, input) {
         }, 1000);
     }
 }
+
+//Elimina el mensaje de error
 
 function eliminarError(input) {
     const contMensaje = document.querySelector('.msj-' + input.name);
@@ -523,6 +532,7 @@ Array.from(botonesEliminar).forEach(boton => boton.addEventListener('click', fun
     boton.parentElement.remove();
 }))
 
+// Añade una imagen a la galería
 function aniadirImagen() {
     const imagen = document.querySelector(".input_imagen");
     const archivo = imagen.files[0]; // Al elegir la imagen se guarda en files (array de objetos File) como objeto File, al no tener el input el atributo multiple solo se puede seleccionar una imagen, por lo que su índice sería el 0. ** En caso de utilizar multiple habría que recorrer el array, añadiendo cada imagen
@@ -578,12 +588,12 @@ if (contador === 0 && seccionCompletaServicios) {
 if (formFiltros){
     actualizarRangoPrecio();
     formFiltros.addEventListener('submit', function (evento) {
-        evento.preventDefault();
+        evento.preventDefault(); //Evita el envío para ordenar los servicios
         ordenarServicios(obtenerServiciosBuscados());
     });
 }
 
-
+// Devuelve los servicios que cumplen con lo buscado y los filtros
 
 function obtenerServiciosBuscados() {
     const buscado = seccionCompletaServicios.querySelector(".filtros__buscador").value.trim().toLowerCase();
@@ -606,6 +616,8 @@ function obtenerServiciosBuscados() {
     }
     return articulosBuscados;
 }
+
+// Ordena los servicios en la página
 
 function ordenarServicios(serviciosAOrdenar) {
     seccionServicios.innerHTML = ""; //Elimino el contenido de la sección
@@ -658,6 +670,8 @@ function ordenarServicios(serviciosAOrdenar) {
 
 }
 
+//Comprueba si el servicio cumple con los filtros
+
 function seFiltra(servicioAFiltrar){
     const precioServicio = parseFloat(servicioAFiltrar.querySelector(".servicio_precio").textContent.split(" ")[1]);
     const fechaServicio = convertirFechaADate(servicioAFiltrar.querySelector(".servicio_fecha").textContent.split(" ")[1]);
@@ -671,11 +685,15 @@ function seFiltra(servicioAFiltrar){
     return seFiltra;
 }
 
+//Comprueba si cumple con el filtro de precio
+
 function verificarPrecioFiltro(precio){
     const precioMin = formFiltros.querySelector(".input_precioMin").value;
     const precioMax = formFiltros.querySelector(".input_precioMax").value;
     if(precio <= precioMin || precioMax <= precio) return false; else return true;
 }
+
+//Comprueba si cumple con el filtro de fecha
 
 function verificarFechaFiltro(fecha){
     const fechaMin = new Date(formFiltros.querySelector(".input_fechaMin").value);
@@ -748,9 +766,7 @@ let idCarrito;
 let contCar = 0;
 const objetosServicio = []
 
-
-
-//Evento para añadir o eliminar servicios del carrito desde la página servicios
+//Crea objetos, para guardar la id del servicio y su título (para buscar el servicio después) y guarda en localStorage el número de servicios existentes
 if (servicios){
     if (contCar === 0){
         for (let i = 0; i < servicios.length; i++){
@@ -766,6 +782,7 @@ if (servicios){
     cambiarTextoBotones()
 
     servicios.forEach(servicio => {
+        //Evento para añadir o eliminar servicios del carrito desde la página servicios
         servicio.addEventListener('click', (evento) => {
             aniadirOEliminarServicios(evento);
         })
@@ -774,6 +791,7 @@ if (servicios){
 
 const carrito = document.querySelector(".seccion_carrito");
 
+//Si existe, realiza el proceso del carrito
 if (carrito) {
     colocarServiciosYaEnCarrito()
     actualizarSubTotal()
@@ -783,6 +801,7 @@ if (carrito) {
     }
 }
 
+/*Guarda en localStorage la id del servicio si lo añade con su HTML, lo elimina si lo borra y cambia el contenido de los botones según el caso*/
 
 function aniadirOEliminarServicios(evento) {
     if (evento.target.classList.contains("boton_aniadir_carrito")) {
@@ -799,6 +818,8 @@ function aniadirOEliminarServicios(evento) {
     }
 }
 
+//Obtiene la id del servicio carrito desde la página servicios
+
 function obtenerServicioId(servicio){
     for (let i = 0; i < parseInt(localStorage.getItem("numServicios")); i++) {
         if (objetosServicio[i].titulo === servicio.querySelector(".servicio__titulo").textContent) {
@@ -806,6 +827,8 @@ function obtenerServicioId(servicio){
         }
     }
 }
+
+// Crea un "nuevo" artículo mediante la info del servicio a añadir y lo añade al carrito
 
 function aniadirACarrito(servicio) {
     const servicioTitulo = servicio.querySelector('.servicio__titulo').textContent;
@@ -831,6 +854,8 @@ function aniadirACarrito(servicio) {
 
 }
 
+//Cambia el contenido de los botones de los servicios
+
 function cambiarTextoBotones(){
     servicios.forEach(servicio => {
         if(localStorage.getItem("Carrito"+obtenerServicioId(servicio)) == null){
@@ -838,6 +863,8 @@ function cambiarTextoBotones(){
         } else servicio.querySelector(".boton_aniadir_carrito").textContent = "Eliminar del carrito";
     })
 }
+
+//Elimina servicios del carrito desde la página carrito
 
 function eliminarDelCarrito() {
     carrito.addEventListener("click", function(evento){
@@ -850,6 +877,8 @@ function eliminarDelCarrito() {
     })
 
 }
+
+//Obtiene la id desde la página carrito
 
 function obtenerClave(titulo){
     const num = parseInt(localStorage.getItem("numServicios"));
@@ -864,6 +893,7 @@ function obtenerClave(titulo){
     }
 }
 
+//Coloca los servicios añadidos al carrito
 
 function colocarServiciosYaEnCarrito() {
     for (let numid = 0; numid < parseInt(localStorage.getItem("numServicios")); numid++){
@@ -876,6 +906,8 @@ function colocarServiciosYaEnCarrito() {
         }
     }
 }
+
+//Actualiza el subtotal del carrito
 
 function actualizarSubTotal(){
     let suma = 0;
