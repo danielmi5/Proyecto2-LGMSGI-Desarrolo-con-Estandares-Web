@@ -320,6 +320,10 @@ https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/
 
 ### FASE 3: Funcionalidades Interactivas
 
+El uso de JavaScript ha permitido mejorar mucho la página en: interactividad, dinamismo y una mejor experiencia de usuario.
+El uso de JavaScript moderno (ES6+) permite escribir un código más limpio, legible y eficiente, facilitando la interacción con el DOM al haber utilizado arrows function (en los eventos mayoritariamente), template literals, y estructuras como forEach. Gracias a let y const, se mejora la seguridad y claridad en el manejo de variables. Además, el uso de `localStorage` junto con objetos y arrays facilita la persistencia de datos (como lo utilizado en el carrito o en el sistema de filtros), lo que mejora la experiencia del usuario.
+
+
 #### DARKMODE
 
 Permite alternar entre el **modo claro** y el **modo oscuro** de la página, y recuerda la opción elegida mediante `localStorage`.
@@ -328,7 +332,7 @@ https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/
 
 Mediante `querySelector` selecciono el input del darmode, para añadirle un evento para que se active cuando cambie el estado del checkbox y llame a `darkmode()`. La función `darkMode()` se encarga de cambiar entre los modos. Obtengo en la constante `esDarkMode` mediante el método `toggle`, true (si la clase "dark-mode" no existe), y false (si existe la elimina). La valor de la constante la almaceno en localStorage, para guardar el modo actual (true - darkmode | false - lightmode). Y al final, asigno al estado del checkbox del darkmode al valor de `esDarkMode`.
 
-Mediante un if verifico en localStorage, si darkmode estaba activo. Si lo estaba añade la clase "dark-mode" al body y cambia a true el estado del checkbox del darkmode.
+Mediante un "if" verifico en `localStorage`, si darkmode estaba activo. Si lo estaba añade la clase "dark-mode" al body y cambia a true el estado del checkbox del darkmode.
 
 
 #### FORMULARIO CON VALIDACIÓN DINÁMICA
