@@ -361,16 +361,21 @@ https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/
 
 ### GALERÍA INTERACTIVA
 
-Permite a los usuarios interactuar con una galería de imágenes de manera dinámica. Pueden seleccionar una imagen desde su dispositivo, la cual se mostrará en la galería. Cada imagen tendrá un botón para eliminarla.
+Permite a los usuarios interactuar con una galería de imágenes de manera dinámica. Pueden seleccionar una imagen desde su dispositivo, la cual se mostrará en la galería. Cada imagen tendrá un botón para eliminarla. Además, las imagenes no se pierden al reiniciar ya que se guardan en localStorage.
 
-https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/8b66e3d9a4a0f813c620801487130eba93b447c7/js/script.js#L523-L571
+https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/dd080137c87f824dcf66a20a301992a0fe825238/js/script.js#L523-L569
 
-La función `aniadirImagen()` se encarga de gestionar el proceso:
+Permite gestionar una galería utilizando el `localStorage` para guardar las imágenes. Al cargar la página, se recuperan las imágenes previamente guardadas en el `localStorage` y se muestran en una lista dentro de un contenedor .galeria_lista. Cada imagen tiene un botón de eliminar que, al hacer clic, elimina la imagen tanto de la vista como del localStorage. Además, el código permite agregar nuevas imágenes a la galería: al seleccionar un archivo de imagen a través de un input y hacer clic en un botón de agregar, se valida si el archivo es una imagen, se lee como un Data URL (en base64), se añade a la galería y se guarda en el localStorage para su persistencia.
 
-- **Selección**: Se selecciona una imagen mediante un input de tipo file (los archivos se guardan en files - File[], pero como solo utilizo uno, cojo la primera posición).
-- **Lector**: Si el archivo existe, creo un objeto FileReader, este convierte el archivo en una URL de datos (Data URL), que es una representación en base64 del contenido del archivo, permitiendo que la imagen se cargue y se muestre en la página sin necesidad de subirla a un servidor.
-- **Creación**: Una vez que el archivo ha sido leído, se crea el contenedor, la propia imagen con la ruta leída y un boton eliminar. Los añado al contenedor y los agrego a la galería.
+#### Funciones utilizadas
 
+https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/dd080137c87f824dcf66a20a301992a0fe825238/js/script.js#L571-L606
+
+- **`agregarImagen(src)`**: Crea un contenedor para una imagen y la agrega al DOM. Crea un `div` como contenedor, inserta la imagen con la ruta proporcionada en el parámetro `src`, y luego crea un botón de eliminación. Al hacer clic en el botón, se elimina el contenedor y la imagen correspondiente se borra del almacenamiento local utilizando la función `eliminarImagenDeLocalStorage`. Finalmente, el contenedor con la imagen y el botón se agrega al elemento `imagenes` en el DOM.
+
+- **`guardarImagen(src)`**: Guarda la ruta de la imagen en el almacenamiento local (`localStorage`). Recupera las imágenes guardadas previamente, agrega la nueva ruta al array y actualiza el `localStorage` con el nuevo array de imágenes. Si no hay imágenes previamente guardadas, crea un array vacío antes de agregar la nueva imagen.
+
+- **`eliminarImagenDeLocalStorage(src)`**: Elimina una imagen del almacenamiento local (`localStorage`). Recupera el array de imágenes guardadas, filtra la imagen que coincide con la ruta proporcionada en el parámetro `src`, y actualiza el `localStorage` con el nuevo array sin esa imagen eliminada.
 
 ### SISTEMA DE FILTROS
 
@@ -381,7 +386,7 @@ https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/
 Antes de realizar los filtros, guardo los servicios en una variable `servicios`, ya que elimino los contenedores.
 Si existe el formulario de los filtros se ejecuta. Primero, hace una llamada a `actualizarRangoPrecio()` que se encarga de mantener actualizado el rango del precio en los filtros. Después, el formulario recibe un evento cuando es envíado, mediante el `métodoPreventDefault()` evito que se envíe el formulario y hago una llamada conjunta a `ordenarServicios(obtenerServiciosBuscados())`, la función que paso como parámetro devuelve los servicios filtrados, y ordenarServicios se encarga de ordenar estos servicios filtrados.
 
-##### Funciones utilizadas:
+#### Funciones utilizadas:
 
 https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/b07a2fda5013726fa71afe2b545ff1702aa7d386/js/script.js#L596-L709
 
