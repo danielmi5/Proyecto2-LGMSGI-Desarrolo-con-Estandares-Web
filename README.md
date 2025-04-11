@@ -354,3 +354,11 @@ https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/
 - `**lanzarBien(mensaje, input)**`: Exactamente igual que en `lanzarError`, pero no se mantiene, se elimina después de 1s.
 
 - `**eliminarError(input)**`: Elimina el mensaje de error del input. Obtiene el mensaje, mediante su clase personalizada para identificarlo. Si existe, lo elimina y elimina del localStorage su "marca" (que indicaba que tenía un mensaje de error).
+
+### GALERÍA INTERACTIVA
+
+Permite a los usuarios interactuar con una galería de imágenes de manera dinámica. Pueden seleccionar una imagen desde su dispositivo, la cual se mostrará en una galería en la página web. Cada imagen tendrá un botón para eliminarla y además, la galería se guarda, por lo que al reiniciar mantiene las imagenes añadidas anteriormente.
+
+https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/8b66e3d9a4a0f813c620801487130eba93b447c7/js/script.js#L523-L571
+
+La función `aniadirImagen()` se encarga de gestionar el proceso. Se selecciona una imagen mediante un input de tipo file. Cuando el usuario selecciona un archivo, la función lee el archivo usando la `FileReader` y lo convierte a un formato base 64 para que se puede visualizar en la página. Posteriormente, crea un contenedor para la imagen y un botón para eliminar la imagen. Si el archivo es válido, la imagen se añade en la galería.
