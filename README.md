@@ -357,7 +357,7 @@ https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/
 
 ### GALERÍA INTERACTIVA
 
-Permite a los usuarios interactuar con una galería de imágenes de manera dinámica. Pueden seleccionar una imagen desde su dispositivo, la cual se mostrará en una galería en la página web. Cada imagen tendrá un botón para eliminarla y además, la galería se guarda, por lo que al reiniciar mantiene las imagenes añadidas anteriormente.
+Permite a los usuarios interactuar con una galería de imágenes de manera dinámica. Pueden seleccionar una imagen desde su dispositivo, la cual se mostrará en la galería. Cada imagen tendrá un botón para eliminarla.
 
 https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/8b66e3d9a4a0f813c620801487130eba93b447c7/js/script.js#L523-L571
 
