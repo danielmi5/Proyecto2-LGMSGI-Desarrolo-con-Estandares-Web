@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Página de favoritos</title>
+</head>
+<body class="pag_inicio">
+<header class="cabecera">
+    <img src="assets/logo.png" alt="LOGO" title="logo" class="cabecera__logo">
+
+    <nav class="cabecera__navegacion">
+        <ul>
+            <li><a href="#" target="_blank">Inicio</a></li>
+            <li><a href="servicios.html" target="_blank">Servicios</a></li>
+            <li><a href="contacto.html" target="_blank">Contacto</a></li>
+            <li><a href="blog.html" target="_blank">Blog</a></li>
+        </ul>
+    </nav>
+
+    <nav class="cabecera__botones">
+        <ul>
+            <li class="botones__darkmode">
+                <label>
+                    <input type="checkbox">
+                    <span class="darkmode__toggle"></span>
+                </label>
+            </li>
+
+            <li class="botones__carrito">
+                <a href="carrito.html" target="_blank">
+                    <img src="assets/carro.svg" alt="carrito" class="imagen_carrito">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main_servicio">
+    <section class="seccion_carrito">
+        <h3 class="carrito__titulo">Servicios guardados en el carrito</h3>
+
+    </section>
+
+    <section class="seccion_acciones">
+        <h3>¿Qué quieres hacer?</h3>
+        <a href="carrito.html" class="continuar">>>Continuar añadiendo a la cesta</a>
+        <p class="linea">———— o —————</p>
+        <a href="#" class="boton_pago">Proceder con el pago</a>
+        <p class="carrito_subtotal"><strong>Subtotal: </strong> </p>
+    </section>
+
+    <section class="newsletter">
+        <h2 class="newsletter__titulo">Suscríbete a nuestras Noticias</h2>
+        <p class="newsletter__descripcion">
+            Recibe las últimas novedades y actualizaciones directamente en tu bandeja de entrada.
+        </p>
+        <form action="#" method="post" class="newsletter__form">
+            <input type="email" class="newsletter__input" placeholder="Introduce tu correo electrónico" required>
+            <button type="submit" class="newsletter__button">Suscribirme</button>
+        </form>
+    </section>
+</main>
+<footer class="pie">
+    <section class="pie__explora">
+        <h3 class="pie__subtitulo">Explora</h3>
+        <ul class="pie__lista">
+            <li><a href="contacto.html">Acerca de nosotros</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="servicios.html">Nuestros servicios</a></li>
+        </ul>
+    </section>
+
+    <section class="pie__politicas">
+        <h3 class="pie__subtitulo">Términos y políticas</h3>
+        <ul class="pie__lista">
+            <li><a href="#">Términos de uso</a></li>
+            <li><a href="#">Pólitica de privacidad</a></li>
+            <li><a href="#">Póliticas de cookies</a></li>
+        </ul>
+    </section>
+
+    <section class="pie__contacto">
+        <h3 class="pie__subtitulo">Info de contacto</h3>
+        <ul class="pie__lista">
+            <li><span>Correo:</span> nosoyyo@correo.es</li>
+            <li><span>Teléfono:</span> 987654321</li>
+        </ul>
+    </section>
+
+    <nav class="pie__redes">
+        <h3 class="pie__subtitulo">Redes sociales</h3>
+        <ul class="pie__lista">
+            <li class="">
+                <a href="https://www.youtube.com" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube" title="YouTube"></a>
+            </li>
+            <li>
+                <a href="https://www.facebook.com" target="_blank">
+                    <img src="https://logodownload.org/wp-content/uploads/2014/09/facebook-logo-1-2.png" alt="Facebook" title="Facebook"></a>
+            </li>
+            <li>
+                <a href="https://www.tiktok.com" target="_blank">
+                    <img src="https://www.pnguniverse.com/wp-content/uploads/2020/10/Tik-Tok-fondo-circular.png" alt="TikTok" title="TikTok">
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" title="Instagram">
+                </a>
+            </li>
+            <li>
+                <a href="https://www.x.com" target="_blank">
+                    <img src="https://vectorseek.com/wp-content/uploads/2023/07/Twitter-X-Logo-Vector-01-2.jpg" alt="X" title="X">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</footer>
+<script src="js/script.js"></script>
+</body>
+</html>

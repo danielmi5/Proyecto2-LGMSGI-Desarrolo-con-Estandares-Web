@@ -1,5 +1,6 @@
 //PARA PODER EJECUTAR CADA APARTADO, PASAR POR EL PARÁMETRO DE LA FUNCIÓN, TRUE. Ejemplo -> function(true) | Eliminar este true para que no se ejecute.
 
+
 //Función global para comprobar selectores
 function selectorValido(selector) {
     // Verifica si el selector es una cadena y si no está vacío
@@ -319,6 +320,7 @@ ejemploCombinado()
 
 //============ DARKMODE ===================================
 
+
 const botonDarkMode = document.querySelector(".botones__darkmode input");
 
 // Función para cambiar entre modos
@@ -349,26 +351,25 @@ botonDarkMode.addEventListener("change", darkMode);
 const form = document.querySelector(".formulario__form");
 if (form) {
     const inputs = form.querySelectorAll("input, textarea");
-    
+
     form.addEventListener("submit", function(e) {
         e.preventDefault(); // Evita el envío del formulario
-    
+
         let formOk = true;
         //Verificación última de que todo está correcto, en caso de que no cancela el envío
         inputs.forEach(input => verificarInput(input));
         //TODO: Que verificarInput() devuelva un booleano para saber si está correcto o no el formulario, si no lo está modificar formOk con false y luego realizar lo necesario.
-    
+
         console.log("Enviando formulario...");
-        console.log(inputs);
-    
+
     });
-    
-    
+
+
     inputs.forEach(input => {
         localStorage.removeItem(input.name);
         input.addEventListener('input', (event) => verificarInput(event.target));
     });
-} 
+}
 
 
 
@@ -551,18 +552,15 @@ function aniadirImagen() {
 
 //=============== FILTROS =================
 
-
 const formFiltros = document.querySelector(".filtros__form");
 const seccionCompletaServicios = document.querySelector(".servicios");
 const seccionServicios = document.querySelector(".servicios_articulos");
 
 /*Esto es para guardar los servicios al principio, ya que al realizar los filtros puede que se eliminen algunos articulos */
 let contador = 0;
-const servicios = [];
-if (contador === 0) {
-    seccionCompletaServicios.querySelectorAll(".servicios__articulo").forEach(servicio => {
-        servicios.push(servicio);
-    });
+let servicios;
+if (contador === 0 && seccionCompletaServicios) {
+    servicios = seccionCompletaServicios.querySelectorAll(".servicios__articulo")
     contador++;
 }
 
@@ -684,8 +682,12 @@ function verificarFechaFiltro(fecha){
 
 // FUNCIÓN PARA MOSTRAR/NO MOTRAR FILTROS
 
-const botonMostrarFiltros = formFiltros.querySelector(".boton_mostrar_filtros");
-const filtros = formFiltros.querySelector(".filtros__extras");
+let botonMostrarFiltros;
+let filtros;
+if (formFiltros) {
+    botonMostrarFiltros = formFiltros.querySelector(".boton_mostrar_filtros");
+    filtros = formFiltros.querySelector(".filtros__extras");
+}
 
 if (botonMostrarFiltros && filtros) {
     botonMostrarFiltros.addEventListener('click', function (){
@@ -729,6 +731,154 @@ function actualizarRangoPrecio() {
 }
 
 
+/* ========== CARRITO ==============*/
+
+//VARIABLE PARA LA ID DE ELEMENTOS CARRITO
+let idCarrito;
+let contCar = 0;
+const objetosServicio = []
+
+
+
+//Evento para añadir o eliminar servicios del carrito desde la página servicios
+if (servicios){
+    if (contCar === 0){
+        for (let i = 0; i < servicios.length; i++){
+            objetosServicio.push({
+                id: contCar++,
+                titulo: servicios[i].querySelector(".servicio__titulo").textContent
+            });
+        }
+        idCarrito = objetosServicio.length
+        localStorage.setItem("numServicios", objetosServicio.length.toString());
+    }
+
+    cambiarTextoBotones()
+
+    servicios.forEach(servicio => {
+        servicio.addEventListener('click', (evento) => {
+            aniadirOEliminarServicios(evento);
+        })
+    });
+}
+
+const carrito = document.querySelector(".seccion_carrito");
+
+if (carrito) {
+    colocarServiciosYaEnCarrito()
+    actualizarSubTotal()
+    //Evento para eliminar servicios del carrito desde la página carrito
+    if (carrito.querySelectorAll("article").length > 0) {
+        eliminarDelCarrito(carrito);
+    }
+}
+
+
+function aniadirOEliminarServicios(evento) {
+    if (evento.target.classList.contains("boton_aniadir_carrito")) {
+        const servicioEvento = evento.target.parentElement;
+        const id = obtenerServicioId(servicioEvento);
+        const servicioId = "Carrito"+id; // "Identificador"
+        if (localStorage.getItem(servicioId) == null) {
+            evento.target.textContent = "Eliminar del carrito";
+            localStorage.setItem(servicioId, servicioEvento.innerHTML);
+        } else {
+            evento.target.textContent = "Añadir al carrito";
+            localStorage.removeItem(servicioId);
+        }
+    }
+}
+
+function obtenerServicioId(servicio){
+    for (let i = 0; i < parseInt(localStorage.getItem("numServicios")); i++) {
+        if (objetosServicio[i].titulo === servicio.querySelector(".servicio__titulo").textContent) {
+            return objetosServicio[i].id;
+        }
+    }
+}
+
+function aniadirACarrito(servicio) {
+    const servicioTitulo = servicio.querySelector('.servicio__titulo').textContent;
+    const servicioPrecio = servicio.querySelector('.servicio_precio').textContent.split(" ")[1];
+    const servicioFecha = servicio.querySelector('.servicio_fecha').textContent.split(" ")[1];
+    const servicioImagen = servicio.querySelector('.servicio__imagen').src;
+
+    const nuevoServicioCarrito = document.createElement('article');
+    nuevoServicioCarrito.classList.add('carrito__servicio');
+
+    nuevoServicioCarrito.innerHTML = `
+    <img src="${servicioImagen}" alt="Imagen del servicio" class="servicio_carrito_imagen">
+    <div class="servicio_carrito_info">
+        <h4 class="servicio_carrito_titulo">${servicioTitulo}</h4>
+        <ul class="servicio_carrito_caracteristicas">
+            <li class="servicio_precio">→<span>Precio: </span>${servicioPrecio} €</li>
+            <li class="servicio_fecha">→<span>Fecha: </span>${servicioFecha}</li>
+        </ul>
+    </div>
+    <button title="eliminar" class="boton_eliminar_carrito"><img src="assets/marca_x.png" alt="x"></button>
+`;
+    carrito.appendChild(nuevoServicioCarrito);
+
+}
+
+function cambiarTextoBotones(){
+    servicios.forEach(servicio => {
+        if(localStorage.getItem("Carrito"+obtenerServicioId(servicio)) == null){
+            servicio.querySelector(".boton_aniadir_carrito").textContent = "Añadir al carrito";
+        } else servicio.querySelector(".boton_aniadir_carrito").textContent = "Eliminar del carrito";
+    })
+}
+
+function eliminarDelCarrito() {
+    carrito.addEventListener("click", function(evento){
+        if(evento.target.parentElement.classList.contains("boton_eliminar_carrito")){
+            localStorage.removeItem("Carrito"+obtenerClave(evento.target.parentElement.parentElement.querySelector(".servicio_carrito_titulo").textContent));
+            evento.target.parentElement.parentElement.remove();
+
+            actualizarSubTotal()
+        }
+    })
+
+}
+
+function obtenerClave(titulo){
+    const num = parseInt(localStorage.getItem("numServicios"));
+    for (let i = 0; i < num; i++) {
+        const contenedorH = document.createElement("article");
+        contenedorH.innerHTML = localStorage.getItem("Carrito"+i);
+        if (localStorage.getItem("Carrito"+i) != null) {
+            if (titulo === contenedorH.querySelector(".servicio__titulo").textContent) {
+                return i;
+            }
+        }
+    }
+}
+
+
+function colocarServiciosYaEnCarrito() {
+    for (let numid = 0; numid < parseInt(localStorage.getItem("numServicios")); numid++){
+        const servicioId = "Carrito"+numid;
+
+        if (localStorage.getItem(servicioId) != null) {
+            const servicio = document.createElement("article");
+            servicio.innerHTML = localStorage.getItem(servicioId)
+            aniadirACarrito(servicio)
+        }
+    }
+}
+
+function actualizarSubTotal(){
+    let suma = 0;
+    const precios = carrito.querySelectorAll(".servicio_precio")
+
+    if (precios.length > 0){
+        precios.forEach(precio => {
+            console.log(precio.textContent.split(" ")[1])
+            suma += parseFloat(precio.textContent.split(" ")[1]);
+        })
+    }
+    document.querySelector(".carrito_subtotal").textContent = "Subtotal: " + suma + " €"
+}
 
 //FUNCIÓN PARA CONVERTIR LA FECHA QUE UTILIZO EN LOS SERVICIOS (TIENE OTRO FORMATO) en un objeto Date
 
@@ -736,6 +886,12 @@ function convertirFechaADate(fecha) {
     const partes = fecha.split("-");
     return new Date(partes[2], partes[1] - 1, partes[0]); // En JS el número de mes empieza en 0 con Enero por eso hay que restar 1
 }
+
+
+
+
+
+
 
 
 
