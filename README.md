@@ -219,7 +219,7 @@ MsgBox "Hola, " & nombre & "!"
 
 ---
 
-### Manipulación del DOM
+### FASE 2: Manipulación del DOM
 
 Para la **ejecución** del script, los apartados están hechos en funciones, de forma predeterminada no se ejecutan, se tiene que pasar true como parámetro de la función que se quiera ejecutar para poder ejecutarla. Todas las funciones se encuentran al final del archivo.
 
@@ -316,3 +316,41 @@ https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/
 5. Asigno al artículo alt y title.
 6. Añado al artículo a la sección con appendChild().
 7. Modifico los estilos de la sección (incluido artículos) mediante style.property.
+
+
+### FASE 3: Funcionalidades Interactivas
+
+#### DARKMODE
+
+Permite alternar entre el **modo claro** y el **modo oscuro** de la página, y recuerda la opción elegida mediante `localStorage`.
+
+https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/8b66e3d9a4a0f813c620801487130eba93b447c7/js/script.js#L324-L345
+
+Mediante `querySelector` selecciono el input del darmode, para añadirle un evento para que se active cuando cambie el estado del checkbox y llame a `darkmode()`. La función `darkMode()` se encarga de cambiar entre los modos. Obtengo en la constante `esDarkMode` mediante el método `toggle`, true (si la clase "dark-mode" no existe), y false (si existe la elimina). La valor de la constante la almaceno en localStorage, para guardar el modo actual (true - darkmode | false - lightmode). Y al final, asigno al estado del checkbox del darkmode al valor de `esDarkMode`.
+
+Mediante un if verifico en localStorage, si darkmode estaba activo. Si lo estaba añade la clase "dark-mode" al body y cambia a true el estado del checkbox del darkmode.
+
+
+#### FORMULARIO CON VALIDACIÓN DINÁMICA
+
+Validación dinámica para el formulario de contacto mostrando mensajes de error o éxito según la interacción del usuario.
+
+https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/8b66e3d9a4a0f813c620801487130eba93b447c7/js/script.js#L351-L373
+
+AL principio guardo en una constante el formulario de contacto a través de su clase con `querySelector`. Si el formulario existe, obtiene todos sus input (input y textarea) mediante `querySelectorAll`. Luego, añade un evento que se activa al enviar el formulario. Durante el evento, verifica todos los campos utilizando la función `verificarInput()` y, si la función `comprobarForm()` indica que hay errores, se cancela el envío y se muestra un mensaje de alerta al usuario. Además, por cada campo del formulario, se elimina cualquier dato guardado previamente en localStorage y se asigna un evento input que valida el campo en tiempo real cada vez que el usuario escribe.
+
+##### Funciones utilizadas
+
+https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/8b66e3d9a4a0f813c620801487130eba93b447c7/js/script.js#L377-L520
+
+- `**verficarInput()**`: Valida un campo específico del formulario dependiendo de su name. Usa una estructura switch para aplicar comprobaciones según el tipo de campo. Si el valor no cumple con el patrón o la condición, se muestra un mensaje de error con `lanzarError()`. Si es válido, se limpia cualquier error anterior con `eliminarError()` y se muestra un mensaje correcto con `lanzarBien()`.
+
+- `**comprobarForm()**`: Comprueba si el formulario está libre de errores. Revisa si hay mensajes de error (mediante su clase .linea-error). Si encuentra alguno, devuelve false; si no hay errores, devuelve true.
+
+- `**validarPatron(valor, patron)**`: Recibe un valor y una cadena que representa una expresión regular (regex). Crea una expresión regular a partir del patrón y verifica si el valor lo cumple mediante el método test() (devuelve true si coincide el regex y la cadena, sino false). Devuelve true si es válido o false si no lo es. Utilizado para comprobar campos que deban seguir un formato específico (teléfono, correo).
+
+- `**lanzarError(mensaje, input)**`: Muestra un mensaje de error debajo del campo si todavía no existe uno para ese input. Se crea un elemento div (contenedor del error) mediante `createElement` con la clase linea-error y una clase personalizada para identificar con que input está (.msj-nombreInput). También se guarda en localStorage que indica que se está utilizando un mensaje de error (para evitar repetir errores si ya está uno visible en ese input). Para añadirlo justo debajo del input, sobre el propio input utilizo el método `insertAdjacentElement()` pasando como parámetro "afterend" (indica que se añada justo después de este) y el elemento a añadir (el mensaje).
+
+- `**lanzarBien(mensaje, input)**`: Exactamente igual que en `lanzarError`, pero no se mantiene, se elimina después de 1s.
+
+- `**eliminarError(input)**`: Elimina el mensaje de error del input. Obtiene el mensaje, mediante su clase personalizada para identificarlo. Si existe, lo elimina y elimina del localStorage su "marca" (que indicaba que tenía un mensaje de error).
