@@ -368,7 +368,7 @@ La función `aniadirImagen()` se encarga de gestionar el proceso:
 - **Creación**: Una vez que el archivo ha sido leído, se crea el contenedor, la propia imagen con la ruta leída y un boton eliminar. Los añado al contenedor y los agrego a la galería.
 
 
-### Sistema de filtros
+### SISTEMA DE FILTROS
 
 Está implementado en los servicios, es un buscador de servicios que permite filtrar y ordenar según opciones elegidas por el usuario.
 
@@ -402,8 +402,44 @@ https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/
 - **Mostrar y ocultar filtros**
 https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/b07a2fda5013726fa71afe2b545ff1702aa7d386/js/script.js#L711-L735
 
-Muestra o oculta el apartado de filtros del buscador de servicios.
+Muestra u oculta el apartado de filtros del buscador de servicios.
+
 Cuando el formulario exista, inicializa el botón de filtros y la sección filtros. Después, añado un evento al botón para que cuando se interactúe con este haga una llamada a la función `mostrarFiltro(contenedor, clave)` (contenedor = sección filtros y clave = "mostrarFiltros"). La clave se utiliza para guardar en localStorage si se muestra o no el aartado de filtros. Dentro de la función, si la clave no está en localStorage (no se muestra), por lo que lo muestra y guarda en localStorage que se está mostrando. En caso de que si estuviera guardada en localStorage, se dejaría de mostrar y se elimina la clave de localStorage.
+
+
+### FLUJO LIBRE (CARRITO) 
+
+Permite añadir los servicios al carrito de compras y dentro de este eliminarlos.
+
+https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/b07a2fda5013726fa71afe2b545ff1702aa7d386/js/script.js#L762-L805
+
+Declaro dos variables, idCarrito(id por cada servicio para el carrito), contCar(contador de servicios), objetosServicio (un array que va a contener todos los servicios con id y titulo). Todas estas variables se inicializan y obtienes sus valores mediante la función `guardarInfoId()`.
+
+Primero (desde servicios), si existe guarda la info mediante `guardarInfoId()` y llama a `cambiarTextoBotones()` (se encarga de mantener el contenido de los botones actualizado). Después, por cada servicio, le añado un evento que se inicia por hacer click y este evento llama a `aniadirOEliminarServicios(evento)`, esta función se encargará de guardar su estado de carrito (si está o no en el carrito) y dependiendo del caso: cambia el contenido del botón de añadir al carrito y modifica `localStorage`.
+
+Segunda (desde carrito), instancio carrito (la sección) y si existe llama a `colocarServiciosYaEnCarrito` que al reiniciar, añade los servicios añadidos anteriormente al carrito guardados en `localStorage`; y también, llama a `actualizarSubTotal()` que dependiendo de los servicios que haya en el carrito modifica el subtotal en tiempo real. Después, si el carrito tiene servicios, llama a `eliminarDelCarrito(carrito)` que se encarga de eliminar servicios del carrito que hayan recibido un evento por interactuar con el botón de eliminar servicios. 
+
+#### Funciones utilizadas
+
+- `**guardarInfoId()**`: Crea un objetos que almacenan la `id` y el `título` de cada servicio visible, y son añadidos a `objetosServicio`. Esto sirve para identificar fácilmente los servicios más adelante. Solo se ejecuta una vez (cuando `contCar` es 0), para evitar duplicados. También guarda en `localStorage` el número total de servicios (`numServicios`) como string, para que pueda ser consultado después desde distintas páginas.
+
+https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/b07a2fda5013726fa71afe2b545ff1702aa7d386/js/script.js#L809-L926
+
+- `**aniadirOEliminarServicios(evento)**`: Añade o elimina un servicio del carrito al hacer clic en el botón correspondiente. Verifica si ya está en `localStorage` mediante su ID personalizada (`Carrito + id`). Si no está, guarda su HTML en el almacenamiento y cambia el botón a "Eliminar del carrito". Si ya está, lo elimina de `localStorage` y cambia el texto a "Añadir al carrito".
+
+- `**obtenerServicioId(servicio)**`: Devuelve el ID de un servicio comparando su título con los objetos almacenados en `objetosServicio`. Se utiliza para obtener el número de Id que se utiliza en `localStorage` para almacenar los servicios en el carrito.
+
+- `**aniadirACarrito(servicio)**`: Crea un nuevo elemento HTML con la información del servicio (título, precio, fecha e imagen) y lo añade al contenedor del carrito.
+
+- `**cambiarTextoBotones()**`: Recorre todos los servicios visibles en la página y cambia el texto de sus botones según si están añadidos al carrito (`localStorage`) o no.
+
+- `**eliminarDelCarrito()**`: Escucha los clics en el contenedor del carrito. Si se pulsa el botón de eliminar (`.boton_eliminar_carrito`), elimina el servicio del DOM y del `localStorage`, y luego actualiza el subtotal con `actualizarSubTotal()`.
+
+- `**obtenerClave(titulo)**`: Busca en `localStorage` la clave asociada al servicio cuyo título coincide con el proporcionado. Se usa desde la página del carrito para identificar correctamente el elemento a eliminar.
+
+- `**colocarServiciosYaEnCarrito()**`: Recorre los servicios guardados en `localStorage` y los inserta en el carrito al cargar la página. Permite que los servicios añadidos anteriormente persistan entre sesiones.
+
+- `**actualizarSubTotal()**`: Calcula el total del precio de los servicios añadidos al carrito. Suma todos los precios y actualiza el valor del subtotal.
 
 
 
