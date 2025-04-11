@@ -339,7 +339,7 @@ https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/
 
 AL principio guardo en una constante el formulario de contacto a través de su clase con `querySelector`. Si el formulario existe, obtiene todos sus input (input y textarea) mediante `querySelectorAll`. Luego, añade un evento que se activa al enviar el formulario. Durante el evento, verifica todos los campos utilizando la función `verificarInput()` y, si la función `comprobarForm()` indica que hay errores, se cancela el envío y se muestra un mensaje de alerta al usuario. Además, por cada campo del formulario, se elimina cualquier dato guardado previamente en localStorage y se asigna un evento input que valida el campo en tiempo real cada vez que el usuario escribe.
 
-##### Funciones utilizadas
+##### Funciones utilizadas:
 
 https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/8b66e3d9a4a0f813c620801487130eba93b447c7/js/script.js#L377-L520
 
@@ -361,4 +361,51 @@ Permite a los usuarios interactuar con una galería de imágenes de manera diná
 
 https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/8b66e3d9a4a0f813c620801487130eba93b447c7/js/script.js#L523-L571
 
-La función `aniadirImagen()` se encarga de gestionar el proceso. Se selecciona una imagen mediante un input de tipo file. Cuando el usuario selecciona un archivo, la función lee el archivo usando la `FileReader` y lo convierte a un formato base 64 para que se puede visualizar en la página. Posteriormente, crea un contenedor para la imagen y un botón para eliminar la imagen. Si el archivo es válido, la imagen se añade en la galería.
+La función `aniadirImagen()` se encarga de gestionar el proceso:
+
+- **Selección**: Se selecciona una imagen mediante un input de tipo file (los archivos se guardan en files - File[], pero como solo utilizo uno, cojo la primera posición).
+- **Lector**: Si el archivo existe, creo un objeto FileReader, este convierte el archivo en una URL de datos (Data URL), que es una representación en base64 del contenido del archivo, permitiendo que la imagen se cargue y se muestre en la página sin necesidad de subirla a un servidor.
+- **Creación**: Una vez que el archivo ha sido leído, se crea el contenedor, la propia imagen con la ruta leída y un boton eliminar. Los añado al contenedor y los agrego a la galería.
+
+
+### Sistema de filtros
+
+Está implementado en los servicios, es un buscador de servicios que permite filtrar y ordenar según opciones elegidas por el usuario.
+
+https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/b07a2fda5013726fa71afe2b545ff1702aa7d386/js/script.js#L573-L594
+
+Antes de realizar los filtros, guardo los servicios en una variable `servicios`, ya que elimino los contenedores.
+Si existe el formulario de los filtros se ejecuta. Primero, hace una llamada a `actualizarRangoPrecio()` que se encarga de mantener actualizado el rango del precio en los filtros. Después, el formulario recibe un evento cuando es envíado, mediante el `métodoPreventDefault()` evito que se envíe el formulario y hago una llamada conjunta a `ordenarServicios(obtenerServiciosBuscados())`, la función que paso como parámetro devuelve los servicios filtrados, y ordenarServicios se encarga de ordenar estos servicios filtrados.
+
+##### Funciones utilizadas:
+
+https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/b07a2fda5013726fa71afe2b545ff1702aa7d386/js/script.js#L596-L709
+
+- `**obtenerServiciosBuscados()**`: Devuelve un array con los servicios que coinciden con la búsqueda del usuario y que además cumplen los filtros seleccionados. Si no hay texto de búsqueda, se devuelven todos los servicios que pasen los filtros. Si hay texto de búsqueda, se compara con el título del servicio y se devuelve solo si también cumple con los filtros, usando `seFiltra()`.
+
+- `**ordenarServicios(serviciosAOrdenar)**`: Ordena los servicios filtrados, recibidos como parámetro, según el filtro de orden seleccionado. Puede ordenar por fecha (más antiguos o recientes) o por precio (mayor a menor o menor a mayor). Si no hay servicios tras filtrar, muestra un mensaje de que no se encontraron resultados. Los ordeno mediante el método `sort()` y se usa `convertirFechaADate()` para convertir la fecha que utilizo (que está en otro formato) a objeto `Date`.
+
+- `**seFiltra(servicioAFiltrar)**`: Determina si un servicio cumple con los filtros de precio y fecha. Extrae los valores desde el DOM y llama a `verificarPrecioFiltro()` y `verificarFechaFiltro()`. Devuelve `true` solo si ambos filtros se cumplen.
+
+- `**verificarPrecioFiltro(precio)**`: Verifica si el precio del servicio está dentro del rango establecido por los inputs `input_precioMin` y `input_precioMax`. Si el precio está fuera de los límites, devuelve `false`; si está dentro, devuelve `true`.
+
+- `**verificarFechaFiltro(fecha)**`: Comprueba si la fecha del servicio está dentro del rango de fechas introducido. Si ambos campos están vacíos, devuelve `true`. Si solo uno está vacío, verifica si la fecha cumple con el otro límite. Si hay ambos, asegura que la fecha esté entre los dos. Devuelve `true` si se cumple y `false` si no se cumple.
+
+- `**actualizarRangoPrecio()**`: Actualiza dinámicamente el valor del label (añadiendo el valor actual) y los valores mínimos y máximos de los inputs de precio en el formulario de filtros. Al llamar a la función, instancio los labels (`.label_precioMin` y `.label_precioMax`) y los inputs (`.input_precioMin` y `.input_precioMax`). Al principio si los inputs existen, añade los valores actuales de los inputs de tipo range al contenido (texto) de los labels. Además, añade eventos `input` a ambos inputs para:
+  - Asegurar que el valor mínimo no supere al máximo y viceversa.
+  - Reflejar inmediatamente el nuevo valor en su label correspondiente.
+
+https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/b07a2fda5013726fa71afe2b545ff1702aa7d386/js/script.js#L737-L759
+
+#### Funcionalidades añadidas
+
+- **Mostrar y ocultar filtros**
+https://github.com/danielmi5/Proyecto2-LGMSGI-Desarrolo-con-Estandares-Web/blob/b07a2fda5013726fa71afe2b545ff1702aa7d386/js/script.js#L711-L735
+
+Muestra o oculta el apartado de filtros del buscador de servicios.
+Cuando el formulario exista, inicializa el botón de filtros y la sección filtros. Después, añado un evento al botón para que cuando se interactúe con este haga una llamada a la función `mostrarFiltro(contenedor, clave)` (contenedor = sección filtros y clave = "mostrarFiltros"). La clave se utiliza para guardar en localStorage si se muestra o no el aartado de filtros. Dentro de la función, si la clave no está en localStorage (no se muestra), por lo que lo muestra y guarda en localStorage que se está mostrando. En caso de que si estuviera guardada en localStorage, se dejaría de mostrar y se elimina la clave de localStorage.
+
+
+
+
+
