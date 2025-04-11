@@ -766,8 +766,8 @@ let idCarrito;
 let contCar = 0;
 const objetosServicio = []
 
-//Crea objetos, para guardar la id del servicio y su título (para buscar el servicio después) y guarda en localStorage el número de servicios existentes
-if (servicios){
+//Crea objetos, para guardar la id del servicio y su título (para buscar el servicio después), y guarda en localStorage el número de servicios existentes
+function guardarInfoId(){
     if (contCar === 0){
         for (let i = 0; i < servicios.length; i++){
             objetosServicio.push({
@@ -778,7 +778,10 @@ if (servicios){
         idCarrito = objetosServicio.length
         localStorage.setItem("numServicios", objetosServicio.length.toString());
     }
+}
 
+if (servicios){
+    guardarInfoId()
     cambiarTextoBotones()
 
     servicios.forEach(servicio => {
