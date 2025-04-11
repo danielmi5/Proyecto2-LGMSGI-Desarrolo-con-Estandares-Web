@@ -353,14 +353,15 @@ if (form) {
     const inputs = form.querySelectorAll("input, textarea");
 
     form.addEventListener("submit", function(e) {
-        e.preventDefault(); // Evita el envío del formulario
-
-        let formOk = true;
+        let formOk = false;
         //Verificación última de que todo está correcto, en caso de que no cancela el envío
         inputs.forEach(input => verificarInput(input));
-        //TODO: Que verificarInput() devuelva un booleano para saber si está correcto o no el formulario, si no lo está modificar formOk con false y luego realizar lo necesario.
+        formOk = comprobarForm()
+        if (!formOk) {
+            e.preventDefault();
+            alert("No se ha podido enviar el formulario (campos incorrectos)")
+        }
 
-        console.log("Enviando formulario...");
 
     });
 
@@ -450,6 +451,15 @@ function verificarInput(input) {
             }
             break;
     }
+
+
+}
+
+function comprobarForm(){
+    const mensajesError = form.querySelectorAll(".linea-error");
+    if (mensajesError.length > 0) {
+        return false
+    } else return true;
 }
 
 function validarPatron(valor, patron) {
